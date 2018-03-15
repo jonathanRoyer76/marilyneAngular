@@ -1,0 +1,38 @@
+@import '_config';
+@import '_image';
+@import '_bouton';
+@import '_label';
+@import '_texte';
+
+*{
+    box-sizing: border-box;
+}
+
+.formulaire{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: absolute;
+    .groupeLabel{    
+        //Marges
+        margin-bottom: .25em;
+        margin-top: .25em;   
+        
+        //Affichage
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+#lblDateNaissance{
+    color: grey;
+}
+
+a{
+    font-style: italic;
+    text-decoration: none;
+    color: $couleurPolice;
+    font-weight: bold;
+}

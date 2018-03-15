@@ -1,0 +1,19 @@
+.bouton{
+    //Police
+    color: $couleurPolice;  
+    font-family: $police;
+    font-size: 20px;
+    background-color: white;
+
+    //Bordure
+    border-color: $couleurPolice;    
+    border-radius: $borderRadius;
+    border-width: 1px;
+    border-style: solid;  
+
+    margin-top: .25em;     
+
+    &:hover{
+        box-shadow: 0px 0px 10px darken($couleurPolice, 10%);
+    }
+}
