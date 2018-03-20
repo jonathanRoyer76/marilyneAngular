@@ -8,6 +8,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersDbService } from './users-db.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http'
+import { TokenInterceptor } from './tokenInterceptor'
 
 
 @NgModule({
@@ -22,7 +24,11 @@ import { UsersDbService } from './users-db.service';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [UsersDbService],
+  providers: [UsersDbService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

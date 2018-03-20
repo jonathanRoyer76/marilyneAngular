@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Personne } from '../personne'
 import { UsersDbService } from '../users-db.service'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Observable} from 'rxjs/Observable'
 
 @Component({
   selector   : 'app-sign-in',
@@ -9,17 +11,20 @@ import { UsersDbService } from '../users-db.service'
   providers: [UsersDbService]
 })
 export class SignInComponent implements OnInit {
-  personne = new Personne();
+  personne: Personne;
 
-  constructor(private myDataBase: UsersDbService) { }
+  constructor(private myDataBase: UsersDbService, private http: HttpClient) { }
 
   ngOnInit() {
     this.personne = new Personne();
   }
 
   Connexion(){
-    //Appeler la méthode signIn du service myDataBase
-    this.myDataBase.signIn(this.personne).subscribe()
+    this.myDataBase.signIn(this.personne).subscribe(data=>{console.log(data)}/*retour => this.personne = retour*/, err=>{console.log(err)});
+  }
+
+  getProfile(){
+    this.myDataBase.getProfile(this.personne).subscribe(retour => alert(retour) /*this.personne = retour*/)    
   }
 
 }

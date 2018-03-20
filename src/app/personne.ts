@@ -11,6 +11,5 @@ export class Personne {
     public id_Categorie: number
     public token: string
     
-    constructor(){               
-    }
+    constructor(){ }
 }
