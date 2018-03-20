@@ -9,10 +9,10 @@ export class UsersDbService {
   //Les constantes
   
   private static HEADER = { headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})}
-
-  public static URL_SIGN_IN = 'http://192.168.1.69:8080/users/signIn'
-  public static URL_SIGN_UP = 'http://192.168.1.69:8080/users/signUp'
-  public static URL_PROFILE = 'http://192.168.1.69:8080/users/me'
+  
+  public static URL_SIGN_IN = 'http://192.168.1.69:8080/api/users/signIn'
+  public static URL_SIGN_UP = 'http://192.168.1.69:8080/api/users/signUp'
+  public static URL_PROFILE = 'http://192.168.1.69:8080/api/users/me'
 
   constructor(private http: HttpClient) { }
 
@@ -21,18 +21,14 @@ export class UsersDbService {
 
     return this.http.post<Personne>(UsersDbService.URL_SIGN_IN, body, 
       UsersDbService.HEADER)
-  }   
-
-  // private setToken(result){
-  //   this.tempPersonne = result;
-  //   console.log('TOKEN RECU: '+this.tempPersonne.token)    
-  // }
+  }
 
   getProfile(pers: Personne): Observable<Personne>{    
-    let autho = new HttpHeaders().set('Authorization', 'Bearer '+pers.token);    
-    let content = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    return this.http.get<Personne>(UsersDbService.URL_PROFILE, 
-      {headers: content}
+    localStorage.setItem('authorization', 'Bearer '+ pers.token)
+    // var headerToken = { headers: new HttpHeaders({'authorization': 'Bearer '+pers.token/*,
+    // 'Content-Type': 'application/x-www-form-urlencoded'*/})}
+
+    return this.http.get<Personne>(UsersDbService.URL_PROFILE/*, headerToken/*UsersDbService.HEADER*/
     ) 
   }   
 }

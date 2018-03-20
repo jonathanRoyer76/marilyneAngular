@@ -9,15 +9,16 @@ export class TokenInterceptor implements HttpInterceptor{
     constructor(public userDb: UsersDbService){ }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
-        request = request.clone({
-            // headers: request.headers.append('Authorization', 'Bearer')
-            // headers: request.headers.append('Content-Type', 'application/x-www-form-urlencoded')
-            // setHeaders: {
-                // Content-Type: 'application/x-www-form-urlencoded'
-                // Authorization: 'Bearer ' + this.userDb.getToken()
-            // }
-        })
-        console.log('DANS L\'INTERCEPTEUR')
+        let tempToken = localStorage.getItem('authorization');
+        if (tempToken!=undefined){
+            request = request.clone({setHeaders: {
+                authorization: tempToken 
+            }
+            });
+        }
+        console.log('content : '+ request.headers.get('Content-Type'))
+        console.log('authorization: '+ request.headers.get('authorization'))
+
         return next.handle(request)
     }
 }

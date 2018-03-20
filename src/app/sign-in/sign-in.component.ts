@@ -20,11 +20,11 @@ export class SignInComponent implements OnInit {
   }
 
   Connexion(){
-    this.myDataBase.signIn(this.personne).subscribe(data=>{console.log(data)}/*retour => this.personne = retour*/, err=>{console.log(err)});
+    this.myDataBase.signIn(this.personne).subscribe(/*data=>{console.log(data)}*/retour => this.personne = retour/*, err=>{console.log(err)}*/);
   }
 
   getProfile(){
-    this.myDataBase.getProfile(this.personne).subscribe(retour => alert(retour) /*this.personne = retour*/)    
+    this.myDataBase.getProfile(this.personne).subscribe(retour => {console.log(retour)} /*this.personne = retour*/)    
   }
 
 }
