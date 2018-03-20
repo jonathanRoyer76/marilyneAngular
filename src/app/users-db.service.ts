@@ -7,11 +7,18 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class UsersDbService {
   //Les constantes
+<<<<<<< Updated upstream
   public static URL_SIGN_IN = 'http://192.168.1.68:8080/api/users/signIn'
   public static URL_SIGN_UP = 'http://localhost:8080/api/users/signUp'
   public static URL_PROFILE = 'http://localhost:8080/api/users/me'
   private static HEADER = { headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})}
   
+=======
+  public static URL_SIGN_IN = 'http://192.168.1.69:8080/users/signIn'
+  public static URL_SIGN_UP = 'http://192.168.1.69:8080/users/signUp'
+  public static URL_PROFILE = 'http://192.168.1.69:8080/users/me'
+
+>>>>>>> Stashed changes
   constructor(private http: HttpClient) { }
 
   signIn(personne: Personne):Observable<Personne>{    
