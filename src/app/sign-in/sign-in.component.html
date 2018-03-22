@@ -1,15 +1,24 @@
 <!-- <form> -->
-    <div class="groupeLabel">    
-    <div class="label">E-mail: </div><input type="text" [(ngModel)]="personne.mail" name="mail">
-    <!-- <div class="label">E-mail: </div><input type="text" name="mail"> -->
+    <div *ngIf='isConnected; else elseBlock'>
+        <h1>
+            <p>
+                CONNECTED                                
+            </p>
+        </h1>
+        <button class='bouton' (click)='Deconnexion()'>Déconnexion</button>
     </div>
-    <div class ="groupeLabel">
-    <!-- <div class="label">Mot de passe: </div><input type="password" name="password"> -->
-    <div class="label">Mot de passe: </div><input type="password" [(ngModel)] = "personne.password" name="password">
-    </div>    
-    <!-- <input type="submit" value ="Connexion" name ="btnEnvoi" class = "bouton"><br/> -->
-    <div class="label">Retour du serveur: </div><input type="text" [(ngModel)] = "personne.token" name="token"><br>
-    <button (click)="Connexion()" name="btnEnvoi" class = "bouton">Connexion</button><br/>
-    <button (click)="getProfile()" name="btnEnvoi" class = "bouton">getProfile</button><br/>
-    <h3><a routerLink="/SignUp">S'inscrire </a>jsnl10s1983</h3>
+    <ng-template #elseBlock>
+        <div class="groupeLabel">    
+        <div class="label">E-mail: </div><input type="text" [(ngModel)]="personne.mail" name="mail">
+        <!-- <div class="label">E-mail: </div><input type="text" name="mail"> -->
+        </div>
+        <div class ="groupeLabel">
+        <!-- <div class="label">Mot de passe: </div><input type="password" name="password"> -->
+        <div class="label">Mot de passe: </div><input type="password" [(ngModel)] = "personne.password" name="password">
+        </div>    
+        <!-- <input type="submit" value ="Connexion" name ="btnEnvoi" class = "bouton"><br/> -->
+        <button (click)="Connexion()" name="btnEnvoi" class = "bouton">Connexion</button><br/>
+        <!-- <button (click)="getProfile()" name="btnEnvoi" class = "bouton">getProfile</button><br/> -->        
+    </ng-template>   
+    <br><a routerLink="/SignUp">S'inscrire </a> 
 <!-- </form>   -->

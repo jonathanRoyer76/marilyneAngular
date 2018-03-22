@@ -9,14 +9,14 @@ import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersDbService } from './users-db.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
-import { TokenInterceptor } from './tokenInterceptor'
+import { TokenInterceptor } from './tokenInterceptor';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
-    SignUpComponent,    
+    SignUpComponent,   
   ],
   imports: [
     BrowserModule,

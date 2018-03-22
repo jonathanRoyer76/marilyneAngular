@@ -10,14 +10,13 @@ export class TokenInterceptor implements HttpInterceptor{
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
         let tempToken = localStorage.getItem('authorization');
-        if (tempToken!=undefined){
+        if (tempToken!=undefined && tempToken!=''){
             request = request.clone({setHeaders: {
                 authorization: tempToken 
             }
             });
         }
-        console.log('content : '+ request.headers.get('Content-Type'))
-        console.log('authorization: '+ request.headers.get('authorization'))
+        // console.log('INTERCEPTEUR '+'authorization: '+ request.headers.get('authorization'))
 
         return next.handle(request)
     }

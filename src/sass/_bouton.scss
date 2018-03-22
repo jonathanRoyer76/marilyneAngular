@@ -1,9 +1,10 @@
 .bouton{
     //Police
-    color: $couleurPolice;  
+    // color: $couleurPolice;  
+    color: white;
     font-family: $police;
     font-size: 20px;
-    background-color: white;
+    background-color: $couleurBouton;
 
     //Bordure
     border-color: $couleurPolice;    

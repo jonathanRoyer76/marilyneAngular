@@ -1,13 +1,10 @@
-.profil100 {
-  border-radius: 50%; }
-
 .bouton {
-  color: #7D45FC;
+  color: white;
   font-family: "Grand hotel";
   font-size: 20px;
-  background-color: white;
+  background-color: #c69;
   border-color: #7D45FC;
-  border-radius: 7px;
+  border-radius: 8px;
   border-width: 1px;
   border-style: solid;
   margin-top: .25em; }
@@ -23,7 +20,7 @@
 input[type='text'] {
   color: #7D45FC;
   border-color: #7D45FC;
-  border-radius: 7px;
+  border-radius: 8px;
   border-width: 1px;
   border-style: solid;
   font-family: "Grand hotel";
@@ -33,7 +30,7 @@ input[type='text'] {
 input[type='password'] {
   color: #7D45FC;
   border-color: #7D45FC;
-  border-radius: 7px;
+  border-radius: 8px;
   border-width: 1px;
   border-style: solid;
   font-family: "Grand hotel";
