@@ -1,24 +1,29 @@
-<!-- <form> -->
-    <div *ngIf='isConnected; else elseBlock'>
-        <h1>
-            <p>
-                CONNECTED                                
-            </p>
-        </h1>
-        <button class='bouton' (click)='Deconnexion()'>Déconnexion</button>
-    </div>
-    <ng-template #elseBlock>
-        <div class="groupeLabel">    
-        <div class="label">E-mail: </div><input type="text" [(ngModel)]="personne.mail" name="mail">
-        <!-- <div class="label">E-mail: </div><input type="text" name="mail"> -->
+<div *ngIf='isConnected; else elseBlock'>
+    <div class="cyan lighten-5 z-depth-3 largeur">
+        <div class="row valign-wrapper">
+            <div class="col"> 
+                <img src="../../assets/public/test.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col">
+                <h4>
+                    <span class="jojo">{{personne.prenom}} </span><br>
+                    <span>{{personne.nom}}</span><br>
+                </h4>
+                <a href=# (click)='Deconnexion()'>Déconnexion</a>
+            </div>
         </div>
-        <div class ="groupeLabel">
-        <!-- <div class="label">Mot de passe: </div><input type="password" name="password"> -->
-        <div class="label">Mot de passe: </div><input type="password" [(ngModel)] = "personne.password" name="password">
-        </div>    
-        <!-- <input type="submit" value ="Connexion" name ="btnEnvoi" class = "bouton"><br/> -->
-        <button (click)="Connexion()" name="btnEnvoi" class = "bouton">Connexion</button><br/>
-        <!-- <button (click)="getProfile()" name="btnEnvoi" class = "bouton">getProfile</button><br/> -->        
-    </ng-template>   
-    <br><a routerLink="/SignUp">S'inscrire </a> 
-<!-- </form>   -->
+    </div>
+</div>
+<ng-template #elseBlock>  
+    <div class='row'>
+        <div class="input-field col s6">
+            <i class="material-icons prefix">email</i>
+            <input type="text" placeholder='E-mail'[(ngModel)]="personne.mail" name="mail">
+        </div>
+        <div class='input-field col s6'>
+            <input type="password" placeholder='Mot de passe'[(ngModel)] = "personne.password" name="password">
+        </div>
+        <button (click)="Connexion()" name="btnEnvoi" class = "btn z-depth-4">Connexion</button><br/>         
+    </div>
+</ng-template>   
+<!-- <br><a routerLink="/SignUp">S'inscrire </a>  -->

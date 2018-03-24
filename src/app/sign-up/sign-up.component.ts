@@ -7,7 +7,7 @@ import { UsersDbService } from '../users-db.service'
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   // styleUrls: ['./sign-up.component.css']
-  styleUrls: ['../../styles/main.css']
+  styleUrls: ['../../css/main.css']
 })
 export class SignUpComponent implements OnInit {
   personne: Personne;  

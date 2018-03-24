@@ -1,32 +1,41 @@
 <!-- formulaire d'inscription -->
+<div class='row'>  
+    <div class="input-field col s6">
+        <i class="material-icons prefix">account_circle</i>
+        <input class='validate' placeholder='Nom'[(ngModel)]="personne.nom" type="text" name="name">        
+    </div>
+    <div class="input-field col s6">
+        <i class="material-icons prefix">account_circle</i>
+        <input class='input-text' placeholder='Prénom'[(ngModel)]="personne.prenom" type="text" name="first">
+    </div>    
+    <div class="input-field col s6">
+        <input class='input-text input-password' placeholder='Mot de passe'[(ngModel)]="personne.password"type="password" name="password">
+    </div>    
+    <div class="input-field col s6">
+        <input class='input-text input-password' placeholder='Confirmer le mot de passe'[(ngModel)]="confirmPassword"type="password" name="passwordConfirm"> 
+    </div>
+    <div class="input-field col s6">
+        <i class="material-icons prefix">phone</i>
+        <input class='input-text' placeholder='Numéro de téléphone'[(ngModel)]="personne.mobile"type="text" name="mobile" placeholder="01-23-45-67-89 ou 0123456789">
+    </div>
+    <div class="input-field col s6">
+        <i class="material-icons prefix">date_range</i>
+        <input class='input-text' placeholder='Date de naissance'[(ngModel)]="personne.dateNaissance"type="text" placeholder ='jj/mm/aaaa' name="birth" id='lblDateNaissance'>
+    </div>
+    <div class="input-field col s6">
+        <i class="material-icons prefix">email</i>
+        <input class='input-text' placeholder='E-mail'[(ngModel)]="personne.mail"type="text" name="mail">
+    </div>
+        <div class='btn '>
+            <i class="material-icons prefix">add_a_photo</i>
+            <input type="file" (change)="selectionFichier($event)" name="avatar" accept=".jpg, .jpeg, .png, .bmp">
+        </div>
+    <p>
+        <button (click)="retour()" class = "btn z-depth-5">Retour
+            <i class="material-icons left">arrow_back</i>
+        </button> 
+        <button (click)="validation()" class = "btn z-depth-5">Valider
+            <i class="material-icons right">send</i>
+        </button>
+    </p>    
 <div>
-  <!-- <form action = "membres/controlers/global.php?action=viewSignUp" enctype='multipart/form-data' method="post" class="formulaire"> -->
-    <div class="groupeLabel">
-     <!-- <div class="label">Nom: </div><input [(ngModel)]="personne.nom" type="text" name="name"> -->
-     <input class='input-text' [(ngModel)]="personne.nom" type="text" name="name" placeholder='Nom'>
-    </div>
-    <div class ="groupeLabel">
-        <div class="label">Prénom: </div><input [(ngModel)]="personne.prenom" type="text" name="first">
-    </div>
-    <div class ="groupeLabel">
-        <div class="label">Mot de passe: </div><input [(ngModel)]="personne.password"type="password" name="password">
-    </div>
-    <div class ="groupeLabel">
-        <div class="label">Retaper le mot de passe: </div><input [(ngModel)]="confirmPassword"type="password" name="passwordConfirm">
-    </div>
-    <div class ="groupeLabel">  
-        <div class="label">Téléphone portable: </div><input [(ngModel)]="personne.mobile"type="text" name="mobile" placeholder="01-23-45-67-89 ou 0123456789">
-    </div>
-    <div class ="groupeLabel">
-        <div class="label">Date de naissance: </div><input [(ngModel)]="personne.dateNaissance"type="text" placeholder ='jj/mm/aaaa' name="birth" id='lblDateNaissance'>
-    </div>
-    <div class ="groupeLabel">
-        <div class="label">E-mail: </div><input [(ngModel)]="personne.mail"type="text" name="mail">
-    </div>
-    <div class ="groupeLabel">
-        <div class="label">Photo de profil: </div><input type="file" (change)="selectionFichier($event)" name="avatar" placeholder="Avatar de profil" accept=".jpg, .jpeg, .png, .bmp">
-    </div> 
-    <p><button (click)="validation()" class = "bouton">Valider</button></p>
-    <p><button (click)="retour()" class = "bouton">Retour</button></p>
-  <!-- </form>  -->
-</div>
