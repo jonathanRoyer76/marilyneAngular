@@ -7,18 +7,20 @@ import { Observable} from 'rxjs/Observable'
 @Component({
   selector   : 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls  : ['./sign-in.component.css'],
+  styleUrls  : ['./sign-in.component.css','../../css/main.css'],
+  // styleUrls: ['../../css/main.css'],
   providers: [UsersDbService]
 })
 export class SignInComponent implements OnInit {
   personne: Personne;
+  nom='test'
   isConnected: boolean;
 
   constructor(private myDataBase: UsersDbService, private http: HttpClient) { }
 
   ngOnInit() {
     this.personne = new Personne();
-    let token = localStorage.getItem('authorization')
+    let token = localStorage.getItem('authorization')    
     if (token!=undefined && token!=''){
       this.isConnected = true;
       this.personne.token = token;
@@ -39,7 +41,7 @@ export class SignInComponent implements OnInit {
   }
 
   getProfile(){
-    this.myDataBase.getProfile(this.personne).subscribe(retour => this.personne = retour)    
+  this.myDataBase.getProfile(this.personne).subscribe(/*data=>{console.log(data)}*/retour => this.personne = retour)    
   }
 
   private connected(data){

@@ -19,7 +19,7 @@
     font-family: "Grand hotel";
     font-weight: 100%;
     font-size: 20px; }
-  
+/*   
   input[type='text'] {
     color: #7D45FC;
     border-color: #7D45FC;
@@ -52,7 +52,7 @@
   
   input[type='file'] {
     color: #7D45FC;
-    font-family: "Grand hotel"; }
+    font-family: "Grand hotel"; } */
   
   * {
     box-sizing: border-box; }
