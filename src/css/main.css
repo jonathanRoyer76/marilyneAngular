@@ -6430,5 +6430,9 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     bottom: auto;
     text-align: center;
     margin-top: 1.2rem; } }
+#banniere {
+  height: 400px;
+  background-size: contain;
+  background-image: url("../assets/public/header.jpg"); }
 
 /*# sourceMappingURL=main.css.map */
