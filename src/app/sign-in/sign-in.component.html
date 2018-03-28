@@ -1,29 +1,26 @@
 <div *ngIf='isConnected; else elseBlock'>
-    <div class="cyan lighten-5 z-depth-3 largeur">
-        <div class="row valign-wrapper">
-            <div class="col"> 
-                <img src="../../assets/public/test.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-            </div>
-            <div class="col">
-                <h4>
-                    <span class="jojo">{{personne.prenom}} </span><br>
-                    <span>{{personne.nom}}</span><br>
-                </h4>
-                <a href=# (click)='Deconnexion()'>Déconnexion</a>
-            </div>
-        </div>
-    </div>
+    <mat-card>
+        <mat-card-header>            
+                <mat-card-title><h3>{{personne.prenom}}</h3></mat-card-title>
+                <mat-card-title><h3>{{personne.nom}}</h3></mat-card-title>
+            <img src = '../../assets/public/test.jpg' mat-card-avatar mat-card-md-image >            
+            <mat-card-subtitle><a href="#" (click)='Deconnexion()'>Déconnexion</a></mat-card-subtitle>
+        </mat-card-header>
+        <!-- <a href="#" (click)='Deconnexion()'>Déconnexion</a> -->
+    </mat-card>
 </div>
 <ng-template #elseBlock>  
-    <div class='row'>
-        <div class="input-field col s6">
-            <i class="material-icons prefix">email</i>
-            <input type="text" placeholder='E-mail'[(ngModel)]="personne.mail" name="mail">
-        </div>
-        <div class='input-field col s6'>
-            <input type="password" placeholder='Mot de passe'[(ngModel)] = "personne.password" name="password">
-        </div>
-        <button (click)="Connexion()" name="btnEnvoi" class = "btn z-depth-4">Connexion</button><br/>         
-    </div>
+    <mat-card>
+        <i class="material-icons prefix">email</i>
+        <mat-form-field>
+            <input matInput type="text" placeholder='E-mail'[(ngModel)]="personne.mail" name="mail">
+        </mat-form-field>
+        <br><i class="material-icons prefix">vpn_key</i>
+        <mat-form-field>
+                <input matInput type="password" placeholder='Mot de passe'[(ngModel)] = "personne.password" name="password">
+        </mat-form-field><br>     
+        <button mat-raised-button (click)="Connexion()" name="btnEnvoi" class = "btn z-depth-4">Connexion</button><br/>         
+        <br><a routerLink="/SignUp">S'inscrire </a> 
+    </mat-card>
 </ng-template>   
-<!-- <br><a routerLink="/SignUp">S'inscrire </a>  -->
+

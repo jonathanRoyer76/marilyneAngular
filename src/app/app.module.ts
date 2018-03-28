@@ -10,7 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsersDbService } from './users-db.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { TokenInterceptor } from './tokenInterceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
+import { MatButtonModule, MatCheckboxModule, MatMenuModule, MatIconModule,
+  MatInputModule, MatSidenavModule, MatCardModule, MatDividerModule
+       } from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -23,6 +27,15 @@ import { TokenInterceptor } from './tokenInterceptor';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatDividerModule,   
+    MatMenuModule,
+    MatIconModule,
+    MatInputModule,
   ],
   providers: [UsersDbService,{
     provide: HTTP_INTERCEPTORS,

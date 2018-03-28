@@ -1,0 +1,16 @@
+@mixin myFormulaire($myTheme){
+    .signUp{
+        @include mat-form-field-theme($myTheme);
+        @include mat-sidenav-theme($myTheme);
+        &.icone-formulaire{
+
+        }
+        &.input-text{
+
+        }
+        &.btn-formulaire{
+            background-color: blue;
+            
+        }
+    }
+}

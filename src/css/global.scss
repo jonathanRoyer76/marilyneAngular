@@ -1,0 +1,58 @@
+@import "../../node_modules/@angular/material/theming"; 
+
+@include mat-core();
+$myPrimary: mat-palette($mat-pink, A400); 
+$myAccent:  mat-palette($mat-pink, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$myWarn: mat-palette($mat-red);
+$myForeground: (
+base:              black,
+divider:           $dark-dividers,
+dividers:          $dark-dividers,
+disabled:          $dark-disabled-text,
+disabled-button:   rgba(black, 0.26),
+disabled-text:     $dark-disabled-text,
+hint-text:         $dark-disabled-text, 
+// secondary-text:    mat-color($mat-pink, 300),
+secondary-text:    $dark-secondary-text,
+icon:              rgba(black, 0.54),
+icons:             rgba(black, 0.54),
+text:              mat-color($mat-pink, A200),
+slider-min:        rgba(black, 0.87),
+slider-off:        rgba(black, 0.26),
+slider-off-active: rgba(black, 0.38),
+);
+
+$myTheme: mat-light-theme($myPrimary, $myAccent, $myWarn, $myForeground); 
+@include angular-material-theme($myTheme);
+
+@import 'button';
+@import 'formulaire';
+@include myButton($myTheme);
+@include myFormulaire($myTheme); 
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.profil{
+    max-width: 300px;
+}
+
+.sidenavContainer{
+    position: absolute;    
+}
+
+.sidenav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+}
+
+.banniere{
+    height: 500px;    
+    background-size: cover;
+    background-image: url('assets/public/header.jpg');
+}

@@ -1,51 +1,21 @@
-<<<<<<< HEAD
-<div id="banniere"></div>
-<nav>
-    <div class="nav-wrapper z-depth-4 fixed">
-      <a href="#" class="brand-logo right">Logo</a>
-      
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="sass.html"><i class="material-icons prefix">menu</i></a></li>
-        <li><a href="sass.html">Premier lien</a></li>
-        <li><a href="badges.html">Second lien</a></li>
-        <li><a href="collapsible.html">Dernier lien</a></li>
-      </ul>
-    </div>
-  </nav>
-<router-outlet></router-outlet>
-=======
-<!-- <h4>
-  Titre de séparation
-</h4> -->
-<!-- <div class='navbar-fixed'> -->
-    <!-- <nav class='sidenav'> -->
-            
-        <!-- <div class ='nav-wrapper'>
-            <ul class='left hide-on-med-and-down'>
-                <li> Premier lien</li>
-                <li> deuxieme lien</li>
-                <li> troisieme lien</li>
-                <li> quatrieme lien</li>
-            </ul>
-        </div> -->
-    <!-- </nav> -->
-    <router-outlet></router-outlet>
-<!-- </div> -->
-<body>
-    <div class='nav-wrapper' style="background-color: blue;">
-        <ul>
-            <li><a href="#!">Premier</a></li>
-            <li><a href="#!">Premier</a></li>
-            <li><a href="#!">Premier</a></li>
-            <li><a href="#!">Premier</a></li>
-        </ul>
-    </div>
-    <router-outlet></router-outlet>
-</body>
+<mat-menu #Menu1="matMenu" yPosition="below" >
+    <button mat-menu-item>Item 1 du menu</button>
+    <button mat-menu-item>Item 2 du menu</button>
+</mat-menu>
 
-
-
-<!-- <h4>
-    Titre de séparation
-</h4> -->
->>>>>>> master
+<mat-sidenav-container class="sidenavContainer">
+    <mat-sidenav #sidenav mode="side" opened="true" class="sidenav" [fixedInViewport]=true >
+        <app-sign-in></app-sign-in>       
+        <br>
+        <button mat-button [matMenuTriggerFor]="Menu1">            
+            <mat-icon>phone</mat-icon>
+            Mon menu à moi personnalisé
+        </button>    
+        <br><br>
+        <mat-divider></mat-divider>    
+    </mat-sidenav>
+    <mat-sidenav-content role="main">
+            <div class="banniere"></div>
+        <router-outlet></router-outlet>                
+    </mat-sidenav-content>
+</mat-sidenav-container> 

@@ -7,8 +7,8 @@ import { Observable} from 'rxjs/Observable'
 @Component({
   selector   : 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls  : ['./sign-in.component.css','../../css/main.css'],
-  // styleUrls: ['../../css/main.css'],
+  // styleUrls  : ['./sign-in.component.css','../../css/main.css'],
+  styleUrls: ['./sign-in.component.css'],
   providers: [UsersDbService]
 })
 export class SignInComponent implements OnInit {

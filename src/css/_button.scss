@@ -1,0 +1,6 @@
+@mixin myButton($myTheme){
+    $primary: map-get($myTheme, primary);
+    button{
+        // background-color: mat-color($primary); 
+    }
+}

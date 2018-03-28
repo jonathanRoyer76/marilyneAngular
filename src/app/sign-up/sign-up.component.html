@@ -1,41 +1,42 @@
-<!-- formulaire d'inscription -->
-<div class='row'>  
-    <div class="input-field col s6">
-        <i class="material-icons prefix">account_circle</i>
-        <input class='validate' placeholder='Nom'[(ngModel)]="personne.nom" type="text" name="name">        
-    </div>
-    <div class="input-field col s6">
-        <i class="material-icons prefix">account_circle</i>
-        <input class='input-text' placeholder='Prénom'[(ngModel)]="personne.prenom" type="text" name="first">
-    </div>    
-    <div class="input-field col s6">
-        <input class='input-text input-password' placeholder='Mot de passe'[(ngModel)]="personne.password"type="password" name="password">
-    </div>    
-    <div class="input-field col s6">
-        <input class='input-text input-password' placeholder='Confirmer le mot de passe'[(ngModel)]="confirmPassword"type="password" name="passwordConfirm"> 
-    </div>
-    <div class="input-field col s6">
-        <i class="material-icons prefix">phone</i>
-        <input class='input-text' placeholder='Numéro de téléphone'[(ngModel)]="personne.mobile"type="text" name="mobile" placeholder="01-23-45-67-89 ou 0123456789">
-    </div>
-    <div class="input-field col s6">
-        <i class="material-icons prefix">date_range</i>
-        <input class='input-text' placeholder='Date de naissance'[(ngModel)]="personne.dateNaissance"type="text" placeholder ='jj/mm/aaaa' name="birth" id='lblDateNaissance'>
-    </div>
-    <div class="input-field col s6">
-        <i class="material-icons prefix">email</i>
-        <input class='input-text' placeholder='E-mail'[(ngModel)]="personne.mail"type="text" name="mail">
-    </div>
+<div class="signUp">
+    <i class="material-icons prefix icone-formulaire">person</i>
+    <mat-form-field>
+        <input matInput class='input-text' placeholder='Nom'[(ngModel)]="personne.nom" type="text" name="name">
+    </mat-form-field>
+    <i class="material-icons prefix icone-formulaire">person</i>
+    <mat-form-field>    
+        <input matInput class='input-text' placeholder='Prénom'[(ngModel)]="personne.prenom" type="text" name="first">
+    </mat-form-field>
+    <i class="material-icons prefix icone-formulaire">vpn_key</i>
+    <mat-form-field>
+        <input matInput class='input-text input-password' placeholder='Mot de passe'[(ngModel)]="personne.password"type="password" name="password">
+    </mat-form-field>
+    <i class="material-icons prefix icone-formulaire">vpn_key</i>
+    <mat-form-field>
+        <input matInput class='input-text input-password' placeholder='Confirmer le mot de passe'[(ngModel)]="confirmPassword"type="password" name="passwordConfirm"> 
+    </mat-form-field>
+    <i class="material-icons prefix icone-formulaire">phone</i>
+    <mat-form-field>    
+        <input matInput class='input-text' placeholder='Numéro de téléphone'[(ngModel)]="personne.mobile"type="text" name="mobile" placeholder="01-23-45-67-89 ou 0123456789">
+    </mat-form-field>
+    <i class="material-icons prefix icone-formulaire">date_range</i>
+    <mat-form-field>    
+        <input matInput class='input-text' placeholder='Date de naissance'[(ngModel)]="personne.dateNaissance"type="text" placeholder ='jj/mm/aaaa' name="birth" id='lblDateNaissance'>
+    </mat-form-field>
+    <i class="material-icons prefix icone-formulaire">email</i>
+    <mat-form-field>    
+        <input matInput class='input-text' placeholder='E-mail'[(ngModel)]="personne.mail"type="text" name="mail">
+    </mat-form-field>
         <div class='btn '>
-            <i class="material-icons prefix">add_a_photo</i>
+            <i class="material-icons prefix icone-formulaire">add_a_photo</i>
             <input type="file" (change)="selectionFichier($event)" name="avatar" accept=".jpg, .jpeg, .png, .bmp">
         </div>
     <p>
-        <button (click)="retour()" class = "btn z-depth-5">Retour
-            <i class="material-icons left">arrow_back</i>
+        <button mat-raised-button (click)="retour()" class = "btn-formulaire">
+            <i class="material-icons left icone-formulaire">arrow_back</i> Retour
         </button> 
-        <button (click)="validation()" class = "btn z-depth-5">Valider
-            <i class="material-icons right">send</i>
-        </button>
-    </p>    
-<div>
+        <button mat-raised-button (click)="validation()" class = "btn-formulaire">Valider 
+            <i class="material-icons right icone-formulaire">send</i>
+        </button>    
+    </p>  
+</div>
