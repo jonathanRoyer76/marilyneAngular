@@ -24,7 +24,10 @@ export class UsersDbService {
   }
 
   getProfile(pers: Personne): Observable<Personne>{
-    return this.http.get<Personne>(UsersDbService.URL_PROFILE) 
+    let head = new HttpHeaders({
+      'Content-Security-Policy': 'default-src \'self\':'
+    })
+    return this.http.get<Personne>(UsersDbService.URL_PROFILE/*, {headers: head}*/) 
   }   
 
   envoiAvatar(fichier: File, id: string): Observable<JSON>{
@@ -33,12 +36,19 @@ export class UsersDbService {
       'Accept': 'application/json'
     })
     let mesParams =  new HttpParams().set('idPersonne', id)    
-    console.log(head)
     let formData: FormData = new FormData();
     formData.append('avatar', fichier, fichier.name);     
 
     return this.http.post<JSON>(UsersDbService.URL_AVATAR, formData, {headers: head, params: mesParams})
   }
+
+  getAvatar(): Observable<Blob>{
+    let head = new HttpHeaders({
+      'Content-Type':'image/jpeg',
+    })
+    
+    return this.http.get(UsersDbService.URL_AVATAR, {responseType: 'blob'})
+    }
 
   signUp(personne: Personne, confirmPassword: string): Observable<JSON>{
     let body;

@@ -33,7 +33,7 @@ $myTheme: mat-light-theme($myPrimary, $myAccent, $myWarn, $myForeground);
 
 a{
     text-decoration: none;
-    color: black;
+    color: mat-color($myPrimary);
 }
 
 .profil{

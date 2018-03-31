@@ -17,11 +17,15 @@
     </mat-form-field>
     <i class="material-icons prefix icone-formulaire">phone</i>
     <mat-form-field>    
-        <input matInput class='input-text' placeholder='Numéro de téléphone'[(ngModel)]="personne.mobile"type="text" name="mobile" placeholder="01-23-45-67-89 ou 0123456789">
+        <input matInput class='input-text' [(ngModel)]="personne.mobile"type="text" name="mobile" placeholder="01-23-45-67-89 ou 0123456789">
     </mat-form-field>
     <i class="material-icons prefix icone-formulaire">date_range</i>
     <mat-form-field>    
-        <input matInput class='input-text' placeholder='Date de naissance'[(ngModel)]="personne.dateNaissance"type="text" placeholder ='jj/mm/aaaa' name="birth" id='lblDateNaissance'>
+        <input matInput class='input-text' [(ngModel)]="personne.dateNaissance"type="text" placeholder ='jj/mm/aaaa' name="birth" id='lblDateNaissance'>
+    </mat-form-field>
+    <i class="material-icons prefix icone-formulaire">place</i>
+    <mat-form-field>    
+        <input matInput class='input-text' [(ngModel)]="personne.adresse"type="text" placeholder ='Adresse' name="birth" id='lblDateNaissance'>
     </mat-form-field>
     <i class="material-icons prefix icone-formulaire">email</i>
     <mat-form-field>    

@@ -1,21 +1,10 @@
-<mat-menu #Menu1="matMenu" yPosition="below" >
-    <button mat-menu-item>Item 1 du menu</button>
-    <button mat-menu-item>Item 2 du menu</button>
-</mat-menu>
 
 <mat-sidenav-container class="sidenavContainer">
     <mat-sidenav #sidenav mode="side" opened="true" class="sidenav" [fixedInViewport]=true >
-        <app-sign-in></app-sign-in>       
-        <br>
-        <button mat-button [matMenuTriggerFor]="Menu1">            
-            <mat-icon>phone</mat-icon>
-            Mon menu à moi personnalisé
-        </button>    
-        <br><br>
-        <mat-divider></mat-divider>    
+        <app-sign-in></app-sign-in>
     </mat-sidenav>
     <mat-sidenav-content role="main">
-            <div class="banniere"></div>
-        <router-outlet></router-outlet>                
+        <div class="banniere"></div>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container> 

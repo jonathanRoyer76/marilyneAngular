@@ -10,6 +10,8 @@ export class Personne {
     public actif: string
     public id_Categorie: number
     public token: string
+    public libelleCategorie: string
+    public avatar: string
     
     constructor(){ }
 }
