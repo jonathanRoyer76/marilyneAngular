@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
+import { FormGroupDirective, NgForm } from '@angular/forms'
 import { Location } from '@angular/common';
 import { Personne } from '../personne'
 import { UsersDbService } from '../users-db.service'
+import { ErrorsHandlerService } from '../errorsHandlers/errors-handler.service'
+import { MatSnackBar } from '@angular/material'
+import { FormBuilder, FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-sign-up',
@@ -10,14 +14,37 @@ import { UsersDbService } from '../users-db.service'
   // styleUrls: ['../../css/main.css']
 })
 export class SignUpComponent implements OnInit {
-  personne: Personne;  
+  personne       : Personne;  
   private fichier: File;
-  confirmPassword: string;
+  myFormGroup : FormGroup
 
-  constructor(private location: Location, private myDataBase: UsersDbService) { }
+  //Contrôleurs d'erreurs
+  controlNom             = new FormControl('', [Validators.required])  
+  controlPrenom          = new FormControl('', [Validators.required])
+  controlPassword        = new FormControl('', [Validators.required, Validators.minLength(1)])
+  controlConfirmPassword = new FormControl('', [Validators.required, Validators.minLength(1)])
+  controlMail            = new FormControl('', [Validators.required, Validators.minLength(1), Validators.email])
+  controlDateNaissance   = new FormControl('', [Validators.minLength(0)])
+  controlMobile          = new FormControl('', [Validators.pattern(/#^0[1-68]([-. ]?[0-9]{2}){4}$#/)])
+
+  constructor(private location: Location, 
+    private myDataBase      : UsersDbService,
+    private httpErrorHandler: ErrorsHandlerService,
+    private mySnackBar      : MatSnackBar,
+  ) {}
 
   ngOnInit() {
-    this.personne = new Personne();
+    this.personne      = new Personne();
+    this.myFormGroup = new FormGroup({
+      nom : this.controlNom,
+      prenom : this.controlPrenom,
+      password : this.controlPassword,
+      confirmPassword : this.controlConfirmPassword,
+      mail : this.controlMail,
+      mobile : this.controlMobile,
+      dateNaissance : this.controlDateNaissance,
+      adresse : new FormControl('',[Validators.minLength(0)])
+    })     
   }
 
   retour(){
@@ -25,30 +52,20 @@ export class SignUpComponent implements OnInit {
   }
 
   validation(){
-    this.myDataBase.signUp(this.personne, this.confirmPassword).subscribe(data=>(this.envoiFichier(data)), err=>this.errorHandler(err));        
-    // this.envoiFichier();
+    this.myDataBase.signUp(this.personne).subscribe(data=>      
+      {
+        this.personne = data
+        this.envoiFichier(data)
+      });        
   }
 
   envoiFichier(data){
-    // envoiFichier(){
-    this.personne.id = data['idPersonne']
-    this.personne.nom = data['nom']
-    this.personne.prenom = data['prenom']
-    this.personne.password = data['password']
-    this.personne.dateNaissance = data['dateNaissance']
-    this.personne.adresse = data['adresse']
-    this.personne.mobile = data['mobile']
-    this.personne.mail = data['mail']
-    this.personne.actif = 'true'
-    this.personne.id_Categorie = 4
-
-    if (this.fichier!=undefined && this.personne.id!=undefined){
-      this.myDataBase.envoiAvatar(this.fichier, this.personne.id.toString()).subscribe(data=>{console.log(data)}, err=>{console.log(err)});
+    this.mySnackBar.open('Utilisateur enregistré', 'Fermer', {
+      duration: 2500
+    })
+    if (this.fichier!=undefined && this.personne.idPersonne!=undefined){
+      this.myDataBase.envoiAvatar(this.fichier, this.personne.idPersonne.toString()).subscribe(data=>{}, err=>this.httpErrorHandler.modalHttpError(err));
     }
-  }
-
-  errorHandler(err){
-    console.log({err});
   }
 
   selectionFichier(event){

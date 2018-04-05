@@ -1,0 +1,43 @@
+<div>
+  <mat-table #table [dataSource]='dataSourceProfiles'>
+    <ng-container matColumnDef='idPersonne'>
+      <mat-header-cell *matHeaderCellDef>Identifiant</mat-header-cell>
+      <mat-cell *matCellDef='let personne'>{{personne.idPersonne}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef='nom'>
+      <mat-header-cell *matHeaderCellDef>Nom</mat-header-cell>
+      <mat-cell *matCellDef='let personne'>{{personne.nom}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef='prenom'>
+      <mat-header-cell *matHeaderCellDef>Prénom</mat-header-cell>
+      <mat-cell *matCellDef='let personne'>{{personne.prenom}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef='dateNaissance'>
+      <mat-header-cell *matHeaderCellDef>Date de naissance</mat-header-cell>
+      <mat-cell *matCellDef='let personne'>{{personne.dateNaissance}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef='adresse'>
+      <mat-header-cell *matHeaderCellDef>Adresse</mat-header-cell>
+      <mat-cell *matCellDef='let personne'>{{personne.adresse}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef='telPortable'>
+      <mat-header-cell *matHeaderCellDef>Téléphone</mat-header-cell>
+      <mat-cell *matCellDef='let personne'>{{personne.telPortable}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef='mail'>
+      <mat-header-cell *matHeaderCellDef>E-mail</mat-header-cell>
+      <mat-cell *matCellDef='let personne'>{{personne.mail}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef='actif'>
+      <mat-header-cell *matHeaderCellDef>Actif</mat-header-cell>
+      <mat-cell *matCellDef='let personne'>{{personne.actif}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef='libelleCategorie'>
+      <mat-header-cell *matHeaderCellDef>Catégorie</mat-header-cell>
+      <mat-cell *matCellDef='let personne'>{{personne.libelleCategorie}}</mat-cell>
+    </ng-container>
+
+      <mat-header-row *matHeaderRowDef="colonnesAffichees"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: colonnesAffichees;"></mat-row>
+    </mat-table>
+</div>

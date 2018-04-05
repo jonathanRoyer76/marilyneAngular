@@ -1,4 +1,5 @@
 <form class ='register' [formGroup]='myFormGroup'>
+<!-- <div> -->
     <mat-icon matPrefix>person</mat-icon>
     <mat-form-field>
         <input matInput placeholder='Nom'[(ngModel)]="personne.nom" type="text" formControlName="nom" required>
@@ -37,16 +38,29 @@
         <input matInput placeholder='E-mail'[(ngModel)]="personne.mail" type="text" formControlName="mail" required [formControl]="controlMail">
         <mat-error *ngIf='controlMail.invalid'>Champ requis invalide</mat-error>
     </mat-form-field>
-        <div>
-            <mat-icon>add_a_photo</mat-icon>
-            <input type="file" (change)="selectionFichier($event)" name="avatar" accept=".jpg, .jpeg, .png, .bmp">
-        </div>
+    <mat-checkbox formControlName='actif' autocomplete="off" [value]='personne.actif' [(ngModel)]='personne.actif' *ngIf='isAdmin'>Actif</mat-checkbox>
+    <mat-icon>perm_identity</mat-icon>
+    <mat-form-field *ngIf='isAdmin'>
+        <mat-select placeholder='Catégories' [(ngModel)]='personne.id_Categorie' formControlName='id_Categorie'>
+            <mat-option *ngFor='let temp of categories' [value]='temp.idCategorie'>
+                {{temp.intitule}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>               
+    <div>
+        <mat-icon>add_a_photo</mat-icon>
+        <input type="file" (change)="selectionFichier($event)" name="avatar" accept=".jpg, .jpeg, .png, .bmp">
+    </div>
     <p>
-        <button mat-raised-button (click)="retour()" name="retour">
-            <mat-icon>arrow_back</mat-icon> Retour
-        </button> 
         <button mat-raised-button (click)="validation()" name="validation">Valider 
             <mat-icon>send</mat-icon>
-        </button>    
-    </p>
+        </button>  
+    </p> 
+    <div>
+        <!-- {{personne.actif}} -->
+    </div>
+        <!-- <button mat-raised-button (click)="test()" >test 
+            <mat-icon>build</mat-icon>
+        </button>   -->
+<!-- </div> -->
 </form>

@@ -2,7 +2,7 @@
 
 @include mat-core();
 $myPrimary: mat-palette($mat-pink, A400); 
-$myAccent:  mat-palette($mat-pink, A200, A100, A400);
+$myAccent:  mat-palette($mat-blue, A200, A100, A400);
 // The warn palette is optional (defaults to red).
 $myWarn: mat-palette($mat-red);
 $myForeground: (
@@ -26,14 +26,15 @@ slider-off-active: rgba(black, 0.38),
 $myTheme: mat-light-theme($myPrimary, $myAccent, $myWarn, $myForeground); 
 @include angular-material-theme($myTheme);
 
-@import 'button';
-@import 'formulaire';
-@include myButton($myTheme);
-@include myFormulaire($myTheme); 
+// @import 'button';
+// @import 'formulaire';
+// @include myButton($myTheme);
+// @include myFormulaire($myTheme); 
 
 a{
     text-decoration: none;
     color: mat-color($myPrimary);
+    cursor: pointer;
 }
 
 .profil{

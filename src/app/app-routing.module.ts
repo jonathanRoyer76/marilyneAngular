@@ -4,11 +4,12 @@ import {Routes} from '@angular/router';
 import {RouterModule} from '@angular/router';
 import {SignInComponent} from './sign-in/sign-in.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
+import { DisplayDataTableComponent } from './display-data-table/display-data-table.component'
 
 const Routes: Routes = [
   {path: 'SignIn', component: SignInComponent},  
   {path: 'SignUp', component: SignUpComponent},
-  // {path: '', redirectTo: 'SignIn', pathMatch: 'full'},
+  {path: 'Profiles', component: DisplayDataTableComponent},
   {path: '', redirectTo: 'SignUp', pathMatch: 'full'},
 ]
 

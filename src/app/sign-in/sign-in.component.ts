@@ -1,32 +1,35 @@
-import { Component, OnInit, ElementRef, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, 
+  Inject, Input, Output, EventEmitter } from '@angular/core';
 import { Personne } from '../personne'
 import { UsersDbService } from '../users-db.service'
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { ErrorsHandlerService } from '../errorsHandlers/errors-handler.service'
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http'
 import { Observable} from 'rxjs/Observable'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { SignUpComponent } from '../sign-up/sign-up.component'
 
 @Component({
   selector   : 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  // styleUrls  : ['./sign-in.component.css','../../css/main.css'],
   styleUrls: ['./sign-in.component.css'],
   providers: [UsersDbService]
 })
 export class SignInComponent implements OnInit {
-  personne: Personne;
+  @Input() personne: Personne;
+  @Output() personneChange = new EventEmitter<Personne>();
   isConnected: boolean;
+  //Représente le contrôle '#avatar' dans le template
   @ViewChild("avatar") avatar: ElementRef;
 
   constructor(private myDataBase: UsersDbService, 
+    private myHttpErrorHandler: ErrorsHandlerService,
     private http: HttpClient,
     public modalSignIn: MatDialog,
     public snackBar: MatSnackBar
   ) { }
 
-  snack(){
-    this.snackBar.open("Bienvenue " + this.personne.prenom + '. Nous sommes ravis de vous revoir.', 'Fermer', {
-      duration: 3000
-    })
+  test(){
+    this.myDataBase.getProfiles().subscribe(data=>{console.log(data)}, err=>{console.log(err.error)})
   }
 
   ngOnInit() {
@@ -44,13 +47,13 @@ export class SignInComponent implements OnInit {
   }
 
   Deconnexion(){
-    this.personne.id               = 0
+    this.personne.idPersonne       = 0
     this.personne.nom              = ''
     this.personne.prenom           = ''
     this.personne.password         = ''
     this.personne.dateNaissance    = null
     this.personne.adresse          = ''
-    this.personne.mobile           = ''
+    this.personne.telPortable      = ''
     this.personne.mail             = ''
     this.personne.actif            = ''
     this.personne.id_Categorie     = 0
@@ -59,34 +62,27 @@ export class SignInComponent implements OnInit {
     this.personne.avatar           = ''
     localStorage.setItem('authorization', '')
     this.isConnected=false;
+    this.personneChange.emit(this.personne);
   }
 
   Connexion(){
-    this.myDataBase.signIn(this.personne).subscribe(retour => this.connected(retour), err=>{console.log(err)});
+    this.myDataBase.signIn(this.personne).subscribe(retour => {
+      console.log(retour)
+      this.personne = retour
+      this.connected(retour)
+    },
+      err=>this.myHttpErrorHandler.modalHttpError(err));
   }
 
   getProfile(){
     this.myDataBase.getProfile(this.personne).subscribe(retour=>{
-      this.parsePersonne(retour);
+      this.personne = retour
+      this.personneChange.emit(this.personne)
       this.personne.prenom = retour['prenom'];
-      this.snack();
-    })    
-  }
-
-  parsePersonne(data){
-    this.personne.id               = data['idPersonne']
-    this.personne.nom              = data['nom']
-    this.personne.prenom           = data['prenom']
-    this.personne.password         = data['password']
-    this.personne.dateNaissance    = data['dateNaissance']
-    this.personne.adresse          = data['adresse']
-    this.personne.mobile           = data['mobile']
-    this.personne.mail             = data['mail']
-    this.personne.actif            = data['actif']
-    this.personne.id_Categorie     = data['id_Categorie']
-    this.personne.token            = data['token']
-    this.personne.libelleCategorie = data['libelleCategorie']  
-    this.personne.avatar           = data['avatar']
+      this.snackBar.open("Bienvenue " + this.personne.prenom + '.', 'Fermer', {
+        duration: 2500
+      })
+    }, err=>this.myHttpErrorHandler.modalHttpError(err))  
   }
 
   getAvatar(){
@@ -94,26 +90,17 @@ export class SignInComponent implements OnInit {
       blob=>{
         this.avatar.nativeElement.src = window.URL.createObjectURL(blob)
       }
-    );    
-  }
-
-  profileAcquis(data){
-    this.parsePersonne(data);
-    this.getAvatar();
+    ), err=>this.myHttpErrorHandler.modalHttpError(err)    
   }
 
   private connected(data){
-    this.parsePersonne(data);
     localStorage.setItem('authorization', this.personne.token)
     this.isConnected=true;
+    this.personneChange.emit(this.personne)
     this.getAvatar();
-  }
-
-  test(){
-    this.modalSignIn.open(modalSignInComponent, {
-      data: {
-        prenom: this.personne.prenom
-    }})
+    this.snackBar.open("Bienvenue " + this.personne.prenom + '.', 'Fermer', {
+      duration: 2500
+    })
   }
 }
 
@@ -123,10 +110,13 @@ export class SignInComponent implements OnInit {
 })
 export class modalSignInComponent{
 
-  prenom: string;
+  titre: string
+  message: string;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: string
   ) {
-    this.prenom=data['prenom'];
+    this.message    = data['message'];
+    this.titre      = data['titre']
    }
 }

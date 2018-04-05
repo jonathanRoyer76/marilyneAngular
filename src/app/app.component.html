@@ -1,10 +1,10 @@
-
 <mat-sidenav-container class="sidenavContainer">
     <mat-sidenav #sidenav mode="side" opened="true" class="sidenav" [fixedInViewport]=true >
-        <app-sign-in></app-sign-in>
+        <app-sign-in [(personne)]="personne" ></app-sign-in>
+        <app-side-nav [(pers)]="personne" ></app-side-nav>
     </mat-sidenav>
     <mat-sidenav-content role="main">
         <div class="banniere"></div>
         <router-outlet></router-outlet>
-    </mat-sidenav-content>
-</mat-sidenav-container> 
+    </mat-sidenav-content>     
+</mat-sidenav-container>

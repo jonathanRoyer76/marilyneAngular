@@ -1,0 +1,190 @@
+<div [ngSwitch]='pers.libelleCategorie'>
+  <div *ngSwitchCase="'Administrateur'">
+      <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-icon>dashboard</mat-icon>
+                Tableau de bord
+              </mat-expansion-panel-header>
+              <p>
+                <a href='#'>mon tableau de bord</a>
+              </p>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-icon>child_care</mat-icon>
+                    Contrats
+                </mat-expansion-panel-header>
+                <p>
+                    <a >Liste des contrats</a>
+                </p>
+                <p>
+                    <a >Avenant de contrat</a>
+                </p>
+                <p>
+                    <a >Ajouter un contrat</a>
+                </p>
+                <p>
+                    <a >Terminer un contrat</a>
+                </p>
+                <p>
+                    <a >Fiches de renseignements</a>
+                </p>
+                </mat-expansion-panel>                
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                <mat-icon>person</mat-icon>
+                Utilisateurs                    
+                </mat-expansion-panel-header>
+                <p>
+                <a routerLink="/Profiles">Liste des utilisateurs</a>
+                </p>
+                <p>
+                <a >
+                    Ajouter un Utilisateur 
+                </a>
+                </p>
+                <p>
+                <a (click)="updateProfile()">Supprimer un compte utilisateur</a> 
+                </p>
+                </mat-expansion-panel>  
+          <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-icon>face</mat-icon>
+            Nounou
+          </mat-expansion-panel-header>
+          <p>
+            <a href='#'>
+              Editer le profil 
+            </a>
+          </p>
+          <p>
+            <a href='#'>
+              Modifier les informations contractuelles
+            </a>
+          </p>
+          </mat-expansion-panel>          
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-icon>date_range</mat-icon>
+              Mois en cours
+            </mat-expansion-panel-header>
+            <p>
+              <a href='#'>
+                Synthèse 
+              </a>
+            </p>
+            <p>
+              <a href='#'>
+                Vue par enfant
+              </a>
+            </p>
+        </mat-expansion-panel>
+      </mat-accordion>
+  </div>
+  <div *ngSwitchCase="'Nounou'">
+    <mat-accordion> 
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+              <mat-icon>assessment</mat-icon>
+              Mon tableau de bord
+          </mat-expansion-panel-header>
+          <p>
+              <a href='#'>Synthèse du mois en cours</a>
+          </p>
+          <p>
+              <a href='#'>Pointage du mois en cours</a>
+          </p>
+      </mat-expansion-panel>    
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+              <mat-icon>face</mat-icon>
+              Mon profil
+          </mat-expansion-panel-header>
+          <p>
+              <a href='#'>Voir mon profil</a>
+          </p>
+          <p>
+              <a >Modifier une fiche enfant</a>
+          </p>
+          <p>
+              <a href='#'>
+                  Modifier mes informations financières
+              </a>
+          </p>
+      </mat-expansion-panel> 
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+              <mat-icon>child_friendly</mat-icon>
+              Les enfants
+          </mat-expansion-panel-header>
+          <p>
+              <a href='#'>Les contrats en cours</a>
+          </p>
+          <p>
+              <a href='#'>Les anniversaires</a>
+          </p>
+          <p>
+              <a href='#'>Fiche de renseignements</a>
+          </p>
+          <p>
+              <a href='#'>Les vacances des enfants</a>
+          </p>
+      </mat-expansion-panel>   
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+              <mat-icon>date_range</mat-icon>
+              Administratif
+          </mat-expansion-panel-header>
+          <p>
+              <a href='#'>Feuille de pointage</a>
+          </p>
+          <p>
+              <a href='#'>Autorisations de sortie</a>
+          </p>
+          <p>
+              <a href='#'>Enregistrer les dates de mes vacances</a>
+          </p>
+          <p>
+              <a href='#'>Imprimer une facture</a>
+          </p>
+          <p>
+              <a href='#'>Enregistrer les dates de vacances scolaires</a>
+          </p>
+      </mat-expansion-panel>  
+      <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                  <mat-icon>archive</mat-icon>
+                  Mes archives
+              </mat-expansion-panel-header>
+              <p>
+                  <a href='#'>Pointages du mois dernier</a>
+              </p>
+              <p>
+                  <a href='#'>Factures du mois dernier</a>
+              </p>
+              <p>
+                  <a href='#'>Mes revenus du mois dernier</a>
+              </p>
+              <p>
+                  <a href='#'>Les mois précédents</a>
+              </p>
+          </mat-expansion-panel>   
+    </mat-accordion>
+  </div>
+  <div *ngSwitchCase="'parent'">
+      <mat-accordion>
+          Test du parent                
+      </mat-accordion>
+  </div>
+  <div *ngSwitchCase="'enfant'">
+      <mat-accordion>  
+          Test de l'enfant              
+      </mat-accordion>
+  </div>
+  <div *ngSwitchCase="'visiteur'"> 
+      <br> 
+      Bonjour visiteur(se)
+  </div>
+</div>
+<br>
