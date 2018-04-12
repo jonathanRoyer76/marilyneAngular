@@ -5,7 +5,7 @@ import { Personne } from '../personne'
 import { UsersDbService } from '../users-db.service'
 import { ErrorsHandlerService } from '../errorsHandlers/errors-handler.service'
 import { MatSnackBar } from '@angular/material'
-import { FormBuilder, FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms'
+import { FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +16,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, FormControl, Validators } 
 export class SignUpComponent implements OnInit {
   personne       : Personne;  
   private fichier: File;
-  myFormGroup : FormGroup
+  myFormGroup    : FormGroup
 
   //Contrôleurs d'erreurs
   controlNom             = new FormControl('', [Validators.required])  
@@ -25,25 +25,25 @@ export class SignUpComponent implements OnInit {
   controlConfirmPassword = new FormControl('', [Validators.required, Validators.minLength(1)])
   controlMail            = new FormControl('', [Validators.required, Validators.minLength(1), Validators.email])
   controlDateNaissance   = new FormControl('', [Validators.minLength(0)])
-  controlMobile          = new FormControl('', [Validators.pattern(/#^0[1-68]([-. ]?[0-9]{2}){4}$#/)])
+  controltelPortable     = new FormControl('', [Validators.pattern(/#^0[1-68]([-. ]?[0-9]{2}){4}$#/)])
 
   constructor(private location: Location, 
-    private myDataBase      : UsersDbService,
-    private httpErrorHandler: ErrorsHandlerService,
-    private mySnackBar      : MatSnackBar,
+    private myDataBase        : UsersDbService,
+    private httpErrorHandler  : ErrorsHandlerService,
+    private mySnackBar        : MatSnackBar,
   ) {}
 
   ngOnInit() {
-    this.personne      = new Personne();
+    this.personne    = new Personne();
     this.myFormGroup = new FormGroup({
-      nom : this.controlNom,
-      prenom : this.controlPrenom,
-      password : this.controlPassword,
-      confirmPassword : this.controlConfirmPassword,
-      mail : this.controlMail,
-      mobile : this.controlMobile,
-      dateNaissance : this.controlDateNaissance,
-      adresse : new FormControl('',[Validators.minLength(0)])
+      nom            : this.controlNom,
+      prenom         : this.controlPrenom,
+      password       : this.controlPassword,
+      confirmPassword: this.controlConfirmPassword,
+      mail           : this.controlMail,
+      telPortable    : this.controltelPortable,
+      dateNaissance  : this.controlDateNaissance,
+      adresse        : new FormControl('',[Validators.minLength(0)])
     })     
   }
 

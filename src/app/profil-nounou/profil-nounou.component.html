@@ -1,0 +1,39 @@
+<form class='addProfil' [formGroup]='myFormGroup'>
+  <mat-form-field>
+    <input matInput placeholder="Taux horaire" [(ngModel)]="myProfile.tauxHoraire" formControlName="tauxHoraire" >
+    <mat-error *ngIf='controlTauxHoraire.invalid'>Champ requis invalide</mat-error>
+    <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Montant d'un repas" [(ngModel)]="myProfile.montantRepas" formControlName="montantRepas" >
+    <mat-error *ngIf='controlMontantRepas.invalid'>Champ requis invalide</mat-error>
+    <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Montant d'une indemnité" [(ngModel)]="myProfile.montantIndemnites" formControlName="montantIndemnites" >
+    <mat-error *ngIf='controlMontantIndemnites.invalid'>Champ requis invalide</mat-error>
+    <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+  </mat-form-field>
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Montant d'un gouter" [(ngModel)]="myProfile.montantGouters" formControlName="montantGouter" >
+      <mat-error *ngIf='controlMontantGouter.invalid'>Champ requis invalide</mat-error>
+      <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Barème au kilomètre" [(ngModel)]="myProfile.baremeKm" formControlName="baremKm" >
+      <mat-error *ngIf='controlBaremeKm.invalid'>Champ requis invalide</mat-error>
+      <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+    </mat-form-field>     
+  </div>
+  <div>
+    <button mat-raised-button (click)="annuler()">
+      <mat-icon>cancel</mat-icon>
+      Annuler
+    </button>
+    <button mat-raised-button (click)="saveProfileNounou()">
+      Valider
+      <mat-icon>send</mat-icon>
+    </button>    
+  </div>
+</form>

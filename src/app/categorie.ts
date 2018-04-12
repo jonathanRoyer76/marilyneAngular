@@ -1,4 +1,4 @@
-export class Categorie{
+export class Categorie {
     public idCategorie: number
-    public intitule    : string
+    public intitule    : string    
 }

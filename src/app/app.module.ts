@@ -7,22 +7,25 @@ import { SignInComponent, modalSignInComponent } from './sign-in/sign-in.compone
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ModifProfilComponent } from './modif-profil/modif-profil.component'
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { ProfilNounouComponent } from './profil-nounou/profil-nounou.component'
+import { ContratComponent } from './contrat/contrat.component';
+
+import { UsersDbService } from './users-db.service';
+import { ErrorsHandlerService, modalHttpErrorHandler } from './errorsHandlers/errors-handler.service'
+import { ProfileNounouService } from './profile-nounou.service';
+import { ContratService } from './contrat.service'
 
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { UsersDbService } from './users-db.service';
-import { ErrorsHandlerService, modalHttpErrorHandler } from './errorsHandlers/errors-handler.service'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { TokenInterceptor } from './tokenInterceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { MatButtonModule, MatCheckboxModule, MatMenuModule, MatIconModule, MatDialogModule,
   MatInputModule, MatSidenavModule, MatCardModule, MatDividerModule, MatExpansionModule,
-  MatSnackBarModule, MatSelectModule, MatSelect, MatTableModule,
+  MatSnackBarModule, MatSelectModule, MatSelect, MatTableModule, MatTabsModule, MatDivider,
        } from '@angular/material';
 import { DisplayDataTableComponent } from './display-data-table/display-data-table.component';
-import { ContratComponent } from './contrat/contrat.component';
-
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { ContratComponent } from './contrat/contrat.component';
     modalSignInComponent, 
     modalHttpErrorHandler, 
     ModifProfilComponent, 
-    SideNavComponent, DisplayDataTableComponent, ContratComponent,
+    SideNavComponent, 
+    DisplayDataTableComponent, 
+    ContratComponent, 
+    ProfilNounouComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,13 +61,18 @@ import { ContratComponent } from './contrat/contrat.component';
     ReactiveFormsModule,
     MatSelectModule,
     MatTableModule,
+    MatTabsModule
   ],
   providers: [UsersDbService,
-    ErrorsHandlerService,{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  }],
+    ErrorsHandlerService,
+    ProfileNounouService,
+    ContratService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   entryComponents: [
     modalSignInComponent,
     modalHttpErrorHandler,

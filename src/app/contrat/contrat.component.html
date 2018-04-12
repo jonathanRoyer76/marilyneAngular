@@ -1,3 +1,234 @@
-<p>
-  contrat works!
-</p>
+<mat-tab-group>
+  <mat-tab label="Renseignements">
+    <form [formGroup]='myFormGroupRenseignements'>
+      <div>
+        <h3 class='h3-contrat'><mat-icon matPrefix>child_care</mat-icon> Enfant</h3>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myEnfant.nom' placeholder="Nom" formControlName='enfantNom'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myEnfant.prenom' placeholder="Prénom" formControlName='enfantPrenom'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myEnfant.dateNaissance' placeholder="Date de naissance" formControlName='enfantDateNaissance'>
+        </mat-form-field>
+      </div>
+      <div>
+        <h3 class='h3-contrat'><mat-icon matPrefix>supervisor_account</mat-icon> Mère</h3>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myMere.nom' placeholder="Nom" formControlName='mereNom'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myMere.prenom' placeholder="Prénom" formControlName='merePrenom'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myMere.mail' placeholder="E-mail" formControlName='mereMail'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myMere.adresse' placeholder="Adresse" formControlName='mereAdresse'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myMere.telPortable' placeholder="Numéro de téléphone" formControlName='mereTelPortable'>
+        </mat-form-field>
+      </div>
+      <div>
+        <h3 class='h3-contrat'><mat-icon matPrefix>supervisor_account</mat-icon> Père</h3>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myPere.nom' placeholder="Nom" formControlName='pereNom'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myPere.prenom' placeholder="Prénom" formControlName='perePrenom'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myPere.mail' placeholder="E-mail" formControlName='pereMail'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myPere.adresse' placeholder="Adresse" formControlName='pereAdresse'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myPere.telPortable' placeholder="Numéro de téléphone" formControlName='pereTelPortable'>
+        </mat-form-field>
+      </div>
+      <div>
+        <h3 class='h3-contrat'><mat-icon matPrefix>person</mat-icon> Tuteur</h3>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myTuteur.nom' placeholder="Nom" formControlName='tuteurNom'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myTuteur.prenom' placeholder="Prénom" formControlName='tuteurPrenom'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myTuteur.telPortable' placeholder="Numéro de téléphone" formControlName='tuteurTelPortable'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myTuteur.adresse' placeholder="Adresse" formControlName='tuteurAdresse'>
+        </mat-form-field>
+      </div>
+      <div>
+        <h3 class='h3-contrat'><mat-icon matPrefix>local_hospital</mat-icon> Médecin de famille</h3>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myDocteur.nom' placeholder="Nom" formControlName='medecinNom'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myDocteur.prenom' placeholder="Prénom" formControlName='medecinPrenom'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myDocteur.telPortable' placeholder="Numéro de téléphone" formControlName='medecinTelPortable'>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]='myDocteur.adresse' placeholder="Adresse" formControlName='medecinAdresse'>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-tab>
+  <mat-tab label="Contrat">
+    <form [formGroup]='myFormGroupContrat'>
+      <h3 class="h3-contrat"><mat-icon matPrefix>home</mat-icon><i>Conditions d'accueil </i></h3>
+      <mat-divider></mat-divider>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Moy d'heures par semaine" [(ngModel)]="myContrat.NbHeuresGardeSemaine" formControlName="moyHeuresParSemaine">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Moy d'heures par mois" [(ngModel)]="myContrat.moyNbHeuresGardeMois" formControlName="moyHeuresParMois">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Moy de semaines par an" [(ngModel)]="myContrat.nbSemainesGardeAn" formControlName="moySemainesParAn">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Date de début du contrat" [(ngModel)]="myContrat.dateDebut" formControlName="dateDebut">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Date de fin du contrat" [(ngModel)]="myContrat.dateFin" formControlName="dateFin">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Moy de jours par mois" [(ngModel)]="myContrat.moyNbJoursGardeMois" formControlName="moyJoursParMois">
+        </mat-form-field>
+      </div> 
+      <h3 class="h3-contrat"><mat-icon matPrefix>euro_symbol</mat-icon><i> Rémunération</i></h3>
+      <mat-divider></mat-divider>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Taux horaire brut" [(ngModel)]="myContrat.tauxHoraireBrut" formControlName="tauxHoraireBrut">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Taux horaire net" [(ngModel)]="myContrat.tauxHoraireNet" formControlName="tauxHoraireNet">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Salaire brut mensuel" [(ngModel)]="myContrat.salaireBaseBrut" formControlName="salaireBaseBrut">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Montant CP contrat" [(ngModel)]="myContrat.congesPayesBaseBrut" formControlName="congesPayesBaseBrut">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Total salaire brut mensuel" [(ngModel)]="myContrat.salaireTotalBaseBrut" formControlName="salaireTotalBaseBrut">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Total salaire net mensuel" [(ngModel)]="myContrat.salaireTotalBaseNet" formControlName="salaireTotalBaseNet">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>
+      </div>
+      <h3 class="h3-contrat"><mat-icon matPrefix>restaurant_menu</mat-icon><i>Indemnités</i></h3>
+      <mat-divider></mat-divider>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Repas" [(ngModel)]="myContrat.montantRepas" formControlName="montantRepas">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Jounalières" [(ngModel)]="myContrat.montantIndemnites" formControlName="montantIndemnites">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Goûter" [(ngModel)]="myContrat.montantGouter" formControlName="montantGouter">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Barème kilométrique" [(ngModel)]="myContrat.baremeKm" formControlName="baremeKm">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-tab>
+  <mat-tab label="Planning">
+    <!-- <h3 class='h3-contrat'><mat-icon matPrefix>access_time</mat-icon> Heures d'acueil dans la semaine</h3> -->
+    <mat-divider></mat-divider>
+    <h3 class='h3-contrat'><u><i>Lundi</i></u></h3>
+    <label>Heure d'arrivée : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.lundi.heureArrivee' placeholder="HH:MM">
+    </mat-form-field>
+    <label>Heure de départ : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.lundi.heureDepart' placeholder="HH:MM">
+    </mat-form-field>  
+    <h3 class='h3-contrat'><u><i>Mardi</i></u></h3>
+    <label>Heure d'arrivée : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.mardi.heureArrivee' placeholder="HH:MM">
+    </mat-form-field>
+    <label>Heure de départ : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.mardi.heureDepart' placeholder="HH:MM">
+    </mat-form-field>
+    <h3 class='h3-contrat'><u><i>Mercredi</i></u></h3>
+    <label>Heure d'arrivée : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.mercredi.heureArrivee' placeholder="HH:MM">
+    </mat-form-field>
+    <label>Heure de départ : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.mercredi.heureDepart' placeholder="HH:MM">
+    </mat-form-field>
+    <h3 class='h3-contrat'><u><i>Jeudi</i></u></h3>
+    <label>Heure d'arrivée : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.jeudi.heureArrivee' placeholder="HH:MM">
+    </mat-form-field>
+    <label>Heure de départ : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.jeudi.heureDepart' placeholder="HH:MM">
+    </mat-form-field>
+    <h3 class='h3-contrat'><u><i>Vendredi</i></u></h3>
+    <label>Heure d'arrivée : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.vendredi.heureArrivee' placeholder="HH:MM">
+    </mat-form-field>
+    <label>Heure de départ : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.vendredi.heureDepart' placeholder="HH:MM">
+    </mat-form-field>
+    <h3 class='h3-contrat'><u><i>Samedi</i></u></h3>
+    <label>Heure d'arrivée : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.samedi.heureArrivee' placeholder="HH:MM">
+    </mat-form-field>
+    <label>Heure de départ : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.samedi.heureDepart' placeholder="HH:MM">
+    </mat-form-field>
+    <h3 class='h3-contrat'><u><i>Dimanche</i></u></h3>
+    <label>Heure d'arrivée : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.dimanche.heureArrivee' placeholder="HH:MM">
+    </mat-form-field>
+    <label>Heure de départ : </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]='myPlanning.dimanche.heureDepart' placeholder="HH:MM">
+    </mat-form-field>    
+  </mat-tab>
+</mat-tab-group>

@@ -67,9 +67,8 @@ export class SignInComponent implements OnInit {
 
   Connexion(){
     this.myDataBase.signIn(this.personne).subscribe(retour => {
-      console.log(retour)
       this.personne = retour
-      this.connected(retour)
+      this.connected()
     },
       err=>this.myHttpErrorHandler.modalHttpError(err));
   }
@@ -78,7 +77,6 @@ export class SignInComponent implements OnInit {
     this.myDataBase.getProfile(this.personne).subscribe(retour=>{
       this.personne = retour
       this.personneChange.emit(this.personne)
-      this.personne.prenom = retour['prenom'];
       this.snackBar.open("Bienvenue " + this.personne.prenom + '.', 'Fermer', {
         duration: 2500
       })
@@ -93,7 +91,7 @@ export class SignInComponent implements OnInit {
     ), err=>this.myHttpErrorHandler.modalHttpError(err)    
   }
 
-  private connected(data){
+  private connected(){
     localStorage.setItem('authorization', this.personne.token)
     this.isConnected=true;
     this.personneChange.emit(this.personne)

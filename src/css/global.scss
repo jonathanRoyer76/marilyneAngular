@@ -2,7 +2,7 @@
 
 @include mat-core();
 $myPrimary: mat-palette($mat-pink, A400); 
-$myAccent:  mat-palette($mat-blue, A200, A100, A400);
+$myAccent:  mat-palette($mat-teal, 400);
 // The warn palette is optional (defaults to red).
 $myWarn: mat-palette($mat-red);
 $myForeground: (
@@ -56,4 +56,8 @@ a{
     height: 500px;    
     background-size: cover;
     background-image: url('assets/public/header.jpg');
+}
+
+.h3-contrat{
+    color : mat-color($myAccent);
 }

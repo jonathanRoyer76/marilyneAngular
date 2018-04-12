@@ -1,24 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Personne } from './personne'
 import { Categorie } from './categorie'
-import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from '@angular/common/http'
+import { ProfilNounou } from './profilNounou'
+import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse, HttpHandler } from '@angular/common/http'
 import { map, tap } from 'rxjs/operators'
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UsersDbService {
+  //Variables locales
+  private listeCategories: Categorie[]
+
   //Les constantes  
   private static HEADER = { headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})}
   
+  //URLs pour les utilisateurs
   public static URL_SIGN_IN = 'http://192.168.1.69:8080/api/users/signIn'
   public static URL_SIGN_UP = 'http://192.168.1.69:8080/api/users/signUp'
   public static URL_PROFILE = 'http://192.168.1.69:8080/api/users/me'
+  public static URL_PROFILE_NOUNOU = 'http://192.168.1.69:8080/api/users/nounou'
   public static URL_PROFILES = 'http://192.168.1.69:8080/api/users/profiles'
+  public static URL_PROFILE_ID = 'http://192.168.1.69:8080/api/users/profileWithId'
   public static URL_AVATAR  = 'http://192.168.1.69:8080/api/users/avatar'
   public static URL_CATEGORIES  = 'http://192.168.1.69:8080/api/users/categories'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+   }  
 
+  //Détermine les catégories pour la liste des utilisateurs
+  determineCategories(listeProfiles: Personne[]): Personne[]{  
+    let listeCategories 
+    this.getCategories().subscribe(data=>{
+      listeCategories = data
+      for ( let i=0; i<listeProfiles.length; i++){
+        for (let tempCategorie of listeCategories){
+          if (listeProfiles[i].id_Categorie == tempCategorie.idCategorie)
+          listeProfiles[i].libelleCategorie = tempCategorie.intitule
+        }
+      }
+    })        
+    return listeProfiles
+  }
+
+  //appelle l'API retrouvant la liste des catégories
   getCategories() : Observable<Categorie[]>{
     return this.http.get<Categorie[]>(UsersDbService.URL_CATEGORIES)
   }
@@ -31,17 +55,26 @@ export class UsersDbService {
       UsersDbService.HEADER)
   }
 
+  //appelle l'API retrouvant la liste des profils utilisateurs
   getProfiles(): Observable<Personne[]>{
     return this.http.get<Personne[]>(UsersDbService.URL_PROFILES)
   }
 
-  //appelle l'API de modification d'un utilisateur
+  //Récupère le profil nounou
+  getProfileNounou(): Observable<Personne>{
+    return this.http.get<Personne>(UsersDbService.URL_PROFILE_NOUNOU)
+  }
+
+  //appelle l'API pour récupérer le profil de l'utilisateur connecté
   getProfile(pers: Personne): Observable<Personne>{
-    let head = new HttpHeaders({
-      'Content-Security-Policy': 'default-src \'self\':'
-    })
-    return this.http.get<Personne>(UsersDbService.URL_PROFILE/*, {headers: head}*/) 
+    return this.http.get<Personne>(UsersDbService.URL_PROFILE) 
   }   
+
+  getProfileWithId(id: number): Observable<Personne>{
+    let paramId = new HttpParams().set('idPersonne', id.toString())
+    let myHeader = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+    return this.http.get<Personne>(UsersDbService.URL_PROFILE_ID, {headers: myHeader, params: paramId})
+  }
 
   //appelle l'API d'envoi du fichier avatar au serveur
   envoiAvatar(fichier: File, id: string): Observable<JSON>{
@@ -73,14 +106,14 @@ export class UsersDbService {
     '&confirmPassword='+personne.confirmPassword+
     '&dateNaissance='+personne.dateNaissance+
     '&adresse='+personne.adresse+
-    '&mobile='+personne.telPortable+
+    '&telPortable='+personne.telPortable+
     '&mail='+personne.mail;
     if (personne.actif!='' || personne.actif!=undefined || personne.actif!=null)
       retour = retour + '&actif=' + personne.actif
     else retour = retour + '&actif=true'
-    if (personne.id_Categorie==0 || personne.id_Categorie!=undefined || personne.id_Categorie!=null)
-      retour = retour + '&idCategorie=' + personne.id_Categorie
-    else retour = retour + '&idCategorie=3'
+    if (personne.id_Categorie!=0 || personne.id_Categorie!=undefined || personne.id_Categorie!=null)
+      retour = retour + '&id_Categorie=' + personne.id_Categorie
+    else retour = retour + '&id_Categorie=3'
     return retour;
   }
 
@@ -91,6 +124,7 @@ export class UsersDbService {
     return this.http.post<Personne>(UsersDbService.URL_SIGN_UP, body, UsersDbService.HEADER)
   }
 
+  //MAJ du profil utilisateur dans la BDD
   updateProfile(personne: Personne): Observable<Personne>{
     let body = this.createBodyFromPersonObject(personne);
     

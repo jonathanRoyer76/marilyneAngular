@@ -1,4 +1,4 @@
-export class Personne {
+export class Personne{
     public idPersonne      : number
     public nom             : string
     public prenom          : string
@@ -13,6 +13,4 @@ export class Personne {
     public token           : string
     public libelleCategorie: string
     public avatar          : string
-    
-    constructor(){}
 }

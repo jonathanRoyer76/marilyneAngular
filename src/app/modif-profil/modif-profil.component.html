@@ -1,66 +1,76 @@
 <form class ='register' [formGroup]='myFormGroup'>
 <!-- <div> -->
+    <div *ngIf='isAdminBoo'>
+        Utilisateur à modifier : 
+        <mat-form-field >        
+            <mat-select placeholder='Utilisateur'  formControlName='selectedId'>
+                <mat-option *ngFor='let temp of listePersonne' [value]='temp.idPersonne'>
+                    <span (click)="onSelect(temp.idPersonne)">{{temp.prenom}} {{temp.nom}}</span>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
     <mat-icon matPrefix>person</mat-icon>
     <mat-form-field>
-        <input matInput placeholder='Nom'[(ngModel)]="personne.nom" type="text" formControlName="nom" required>
+        <input matInput placeholder='Nom'[(ngModel)]="modifPersonnne.nom" type="text" formControlName="nom" required>
         <mat-error *ngIf='controlNom.invalid'>Champ requis invalide</mat-error>
     </mat-form-field>
     <mat-icon>person</mat-icon>
     <mat-form-field>
-        <input matInput placeholder='Prénom'[(ngModel)]="personne.prenom" type="text" formControlName="prenom" required>
+        <input matInput placeholder='Prénom'[(ngModel)]="modifPersonnne.prenom" type="text" formControlName="prenom" required>
         <mat-error *ngIf='controlPrenom.invalid'>Champ requis invalide</mat-error>
     </mat-form-field>
     <mat-icon>vpn_key</mat-icon>
     <mat-form-field>
-        <input matInput placeholder='Mot de passe'[(ngModel)]="personne.password"type="password" formControlName="password" required>
+        <input matInput placeholder='Mot de passe'[(ngModel)]="modifPersonnne.password"type="password" formControlName="password">
         <mat-error *ngIf='controlPassword.invalid'>Champ requis invalide</mat-error>
     </mat-form-field>
     <mat-icon>vpn_key</mat-icon>
     <mat-form-field>
-        <input matInput placeholder='Confirmer le mot de passe'[(ngModel)]="personne.confirmPassword"type="password" formControlName="confirmPassword" required [formControl]="controlConfirmPassword"> 
+        <input matInput placeholder='Confirmer le mot de passe'[(ngModel)]="modifPersonnne.confirmPassword"type="password" formControlName="confirmPassword" [formControl]="controlConfirmPassword"> 
         <mat-error *ngIf='controlConfirmPassword.invalid'>Champ requis invalide</mat-error> 
     </mat-form-field>
     <mat-icon>phone</mat-icon>
     <mat-form-field>
-        <input matInput [(ngModel)]="personne.telPortable"type="text" placeholder="01-23-45-67-89 ou 0123456789" formControlName="mobile" [formControl]="controlMobile">
+        <input matInput [(ngModel)]="modifPersonnne.telPortable"type="text" placeholder="01-23-45-67-89 ou 0123456789" formControlName="telPortable" [formControl]="controltelPortable">
     </mat-form-field>
     <mat-icon>date_range</mat-icon>
     <mat-form-field>
-        <input matInput [(ngModel)]="personne.dateNaissance"type="text" placeholder ='jj/mm/aaaa' formControlName="dateNaissance" [formControl]="controlDateNaissance">
+        <input matInput [(ngModel)]="modifPersonnne.dateNaissance"type="text" placeholder ='jj/mm/aaaa' formControlName="dateNaissance" [formControl]="controlDateNaissance">
         <mat-error *ngIf='controlDateNaissance.invalid'>Saisie invalide</mat-error>
     </mat-form-field>
     <mat-icon>place</mat-icon>
     <mat-form-field>
-        <input matInput [(ngModel)]="personne.adresse"type="text" placeholder ='Adresse' formControlName="adresse">
+        <input matInput [(ngModel)]="modifPersonnne.adresse"type="text" placeholder ='Adresse' formControlName="adresse">
     </mat-form-field>
     <mat-icon>email</mat-icon>
     <mat-form-field>    
-        <input matInput placeholder='E-mail'[(ngModel)]="personne.mail" type="text" formControlName="mail" required [formControl]="controlMail">
+        <input matInput placeholder='E-mail'[(ngModel)]="modifPersonnne.mail" type="text" formControlName="mail" required [formControl]="controlMail">
         <mat-error *ngIf='controlMail.invalid'>Champ requis invalide</mat-error>
-    </mat-form-field>
-    <mat-checkbox formControlName='actif' autocomplete="off" [value]='personne.actif' [(ngModel)]='personne.actif' *ngIf='isAdmin'>Actif</mat-checkbox>
-    <mat-icon>perm_identity</mat-icon>
-    <mat-form-field *ngIf='isAdmin'>
-        <mat-select placeholder='Catégories' [(ngModel)]='personne.id_Categorie' formControlName='id_Categorie'>
-            <mat-option *ngFor='let temp of categories' [value]='temp.idCategorie'>
-                {{temp.intitule}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>               
+    </mat-form-field>   
+    <span *ngIf='isAdminBoo'>
+        <mat-checkbox formControlName='actif' autocomplete="off" [value]='modifPersonnne.actif' [(ngModel)]='personne.actif' *ngIf='isAdmin'>Actif</mat-checkbox>
+        <mat-icon>perm_identity</mat-icon>
+        <mat-form-field *ngIf='isAdminBoo'>        
+            <mat-select placeholder='Catégories' [(ngModel)]='modifPersonnne.id_Categorie' formControlName='id_Categorie'>
+                <mat-option *ngFor='let temp of categories' [value]='temp.idCategorie'>
+                    {{temp.intitule}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </span>    
     <div>
         <mat-icon>add_a_photo</mat-icon>
         <input type="file" (change)="selectionFichier($event)" name="avatar" accept=".jpg, .jpeg, .png, .bmp">
     </div>
     <p>
-        <button mat-raised-button (click)="validation()" name="validation">Valider 
+        <button mat-raised-button (click)="fermeture()" name="fermeture">Annuler 
+            <mat-icon>close</mat-icon>
+        </button> 
+        <button mat-raised-button (click)="validation()" name="validation">Valider et fermer 
             <mat-icon>send</mat-icon>
-        </button>  
+        </button>         
     </p> 
     <div>
-        <!-- {{personne.actif}} -->
     </div>
-        <!-- <button mat-raised-button (click)="test()" >test 
-            <mat-icon>build</mat-icon>
-        </button>   -->
-<!-- </div> -->
 </form>

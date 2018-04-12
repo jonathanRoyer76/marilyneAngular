@@ -5,12 +5,16 @@ import {RouterModule} from '@angular/router';
 import {SignInComponent} from './sign-in/sign-in.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
 import { DisplayDataTableComponent } from './display-data-table/display-data-table.component'
+import { ProfilNounouComponent } from './profil-nounou/profil-nounou.component'
+import { ContratComponent } from './contrat/contrat.component'
 
 const Routes: Routes = [
-  {path: 'SignIn', component: SignInComponent},  
-  {path: 'SignUp', component: SignUpComponent},
-  {path: 'Profiles', component: DisplayDataTableComponent},
-  {path: '', redirectTo: 'SignUp', pathMatch: 'full'},
+  {path: 'SignIn', component       : SignInComponent},  
+  {path: 'SignUp', component       : SignUpComponent},
+  {path: 'Profiles', component     : DisplayDataTableComponent},
+  {path: 'ProfileNounou', component: ProfilNounouComponent},
+  {path: 'Contrat', component      : ContratComponent},
+  {path: '', redirectTo: 'Contrat', pathMatch: 'full'},
 ]
 
 @NgModule({
