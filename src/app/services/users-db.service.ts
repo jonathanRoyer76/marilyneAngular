@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Personne } from './personne'
-import { Categorie } from './categorie'
-import { ProfilNounou } from './profilNounou'
+import { Personne } from '../classes/personne'
+import { Categorie } from '../classes/categorie'
+import { ProfilNounou } from '../classes/profilNounou'
 import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse, HttpHandler } from '@angular/common/http'
-import { map, tap } from 'rxjs/operators'
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Personne } from '../personne'
-import { ProfilNounou } from '../profilNounou'
-import { UsersDbService } from '../users-db.service'
+import { Personne } from '../classes/personne'
+import { ProfilNounou } from '../classes/profilNounou'
+import { UsersDbService } from '../services/users-db.service'
 import { ModifProfilComponent } from '../modif-profil/modif-profil.component'
 import { ProfilNounouComponent } from '../profil-nounou/profil-nounou.component'
 import { MatDialog } from '@angular/material'

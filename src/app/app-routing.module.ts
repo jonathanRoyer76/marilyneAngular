@@ -14,7 +14,7 @@ const Routes: Routes = [
   {path: 'Profiles', component     : DisplayDataTableComponent},
   {path: 'ProfileNounou', component: ProfilNounouComponent},
   {path: 'Contrat', component      : ContratComponent},
-  {path: '', redirectTo: 'Contrat', pathMatch: 'full'},
+  {path: '', redirectTo: 'Accueil', pathMatch: 'full'},
 ]
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import { Personne } from './personne'
-import { UsersDbService } from './users-db.service'
+import { Personne } from './classes/personne'
+import { UsersDbService } from './services/users-db.service'
 
 @Component({
   selector: 'app-root',

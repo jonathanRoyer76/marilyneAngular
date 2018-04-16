@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpHeaders } from '@angular/common/http'
-import { UsersDbService } from './users-db.service'
+import { UsersDbService } from './services/users-db.service'
 import { Observable } from 'rxjs/Observable'
 
 @Injectable()

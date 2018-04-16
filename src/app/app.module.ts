@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, } from '@angular/core';
+import { NgModule,  } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
@@ -10,10 +10,10 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { ProfilNounouComponent } from './profil-nounou/profil-nounou.component'
 import { ContratComponent } from './contrat/contrat.component';
 
-import { UsersDbService } from './users-db.service';
+import { UsersDbService } from './services/users-db.service';
 import { ErrorsHandlerService, modalHttpErrorHandler } from './errorsHandlers/errors-handler.service'
-import { ProfileNounouService } from './profile-nounou.service';
-import { ContratService } from './contrat.service'
+import { ProfileNounouService } from './services/profile-nounou.service';
+import { ContratService } from './services/contrat.service'
 
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,8 +24,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatButtonModule, MatCheckboxModule, MatMenuModule, MatIconModule, MatDialogModule,
   MatInputModule, MatSidenavModule, MatCardModule, MatDividerModule, MatExpansionModule,
   MatSnackBarModule, MatSelectModule, MatSelect, MatTableModule, MatTabsModule, MatDivider,
+  MatDatepickerModule, MatNativeDateModule
        } from '@angular/material';
 import { DisplayDataTableComponent } from './display-data-table/display-data-table.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,7 @@ import { DisplayDataTableComponent } from './display-data-table/display-data-tab
     SideNavComponent, 
     DisplayDataTableComponent, 
     ContratComponent, 
-    ProfilNounouComponent,
+    ProfilNounouComponent, AccueilComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,9 @@ import { DisplayDataTableComponent } from './display-data-table/display-data-tab
     ReactiveFormsModule,
     MatSelectModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [UsersDbService,
     ErrorsHandlerService,

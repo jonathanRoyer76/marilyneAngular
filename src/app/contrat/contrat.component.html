@@ -5,83 +5,91 @@
         <h3 class='h3-contrat'><mat-icon matPrefix>child_care</mat-icon> Enfant</h3>
         <mat-divider></mat-divider>
         <mat-form-field>
-          <input matInput [(ngModel)]='myEnfant.nom' placeholder="Nom" formControlName='enfantNom'>
+          <input matInput [(ngModel)]='donneesContrat.enfant.nom' placeholder="Nom" formControlName='enfantNom' required>
+          <mat-error *ngIf="controlEnfantNom.invalid">Champ requis invalide</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myEnfant.prenom' placeholder="Prénom" formControlName='enfantPrenom'>
+          <input matInput [(ngModel)]='donneesContrat.enfant.prenom' placeholder="Prénom" formControlName='enfantPrenom' required>
+          <mat-error *ngIf="controlEnfantPrenom.invalid">Champ requis invalide</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myEnfant.dateNaissance' placeholder="Date de naissance" formControlName='enfantDateNaissance'>
+          <input matInput [min]='minDateDebut' [matDatepicker]='dateNaissanceEnfant' placeholder="Date de naissance" [(ngModel)]="donneesContrat.enfant.dateNaissance" formControlName="enfantDateNaissance">
+          <mat-datepicker-toggle matPrefix [for]='dateNaissanceEnfant'></mat-datepicker-toggle>
+          <mat-datepicker #dateNaissanceEnfant></mat-datepicker>
         </mat-form-field>
       </div>
       <div>
         <h3 class='h3-contrat'><mat-icon matPrefix>supervisor_account</mat-icon> Mère</h3>
         <mat-divider></mat-divider>
         <mat-form-field>
-          <input matInput [(ngModel)]='myMere.nom' placeholder="Nom" formControlName='mereNom'>
+          <input matInput [(ngModel)]='donneesContrat.mere.nom' placeholder="Nom" formControlName='mereNom' required>
+          <mat-error *ngIf="controlMereNom.invalid">Champ requis invalide</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myMere.prenom' placeholder="Prénom" formControlName='merePrenom'>
+          <input matInput [(ngModel)]='donneesContrat.mere.prenom' placeholder="Prénom" formControlName='merePrenom' required>
+          <mat-error *ngIf="controlMerePrenom.invalid">Champ requis invalide</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myMere.mail' placeholder="E-mail" formControlName='mereMail'>
+          <input matInput [(ngModel)]='donneesContrat.mere.mail' placeholder="E-mail" formControlName='mereMail'>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myMere.adresse' placeholder="Adresse" formControlName='mereAdresse'>
+          <input matInput [(ngModel)]='donneesContrat.mere.adresse' placeholder="Adresse" formControlName='mereAdresse'>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myMere.telPortable' placeholder="Numéro de téléphone" formControlName='mereTelPortable'>
+          <input matInput [(ngModel)]='donneesContrat.mere.telPortable' placeholder="Numéro de téléphone" formControlName='mereTelPortable'>
         </mat-form-field>
       </div>
       <div>
         <h3 class='h3-contrat'><mat-icon matPrefix>supervisor_account</mat-icon> Père</h3>
         <mat-divider></mat-divider>
         <mat-form-field>
-          <input matInput [(ngModel)]='myPere.nom' placeholder="Nom" formControlName='pereNom'>
+          <input matInput [(ngModel)]='donneesContrat.pere.nom' placeholder="Nom" formControlName='pereNom' required>
+          <mat-error *ngIf="controlPereNom.invalid">Champ requis invalide</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myPere.prenom' placeholder="Prénom" formControlName='perePrenom'>
+          <input matInput [(ngModel)]='donneesContrat.pere.prenom' placeholder="Prénom" formControlName='perePrenom' required>
+          <mat-error *ngIf="controlPerePrenom.invalid">Champ requis invalide</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myPere.mail' placeholder="E-mail" formControlName='pereMail'>
+          <input matInput [(ngModel)]='donneesContrat.pere.mail' placeholder="E-mail" formControlName='pereMail'>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myPere.adresse' placeholder="Adresse" formControlName='pereAdresse'>
+          <input matInput [(ngModel)]='donneesContrat.pere.adresse' placeholder="Adresse" formControlName='pereAdresse'>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myPere.telPortable' placeholder="Numéro de téléphone" formControlName='pereTelPortable'>
+          <input matInput [(ngModel)]='donneesContrat.pere.telPortable' placeholder="Numéro de téléphone" formControlName='pereTelPortable'>
         </mat-form-field>
       </div>
       <div>
         <h3 class='h3-contrat'><mat-icon matPrefix>person</mat-icon> Tuteur</h3>
         <mat-divider></mat-divider>
         <mat-form-field>
-          <input matInput [(ngModel)]='myTuteur.nom' placeholder="Nom" formControlName='tuteurNom'>
+          <input matInput [(ngModel)]='donneesContrat.tuteur.nom' placeholder="Nom" formControlName='tuteurNom'>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myTuteur.prenom' placeholder="Prénom" formControlName='tuteurPrenom'>
+          <input matInput [(ngModel)]='donneesContrat.tuteur.prenom' placeholder="Prénom" formControlName='tuteurPrenom'>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myTuteur.telPortable' placeholder="Numéro de téléphone" formControlName='tuteurTelPortable'>
+          <input matInput [(ngModel)]='donneesContrat.tuteur.telPortable' placeholder="Numéro de téléphone" formControlName='tuteurTelPortable'>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myTuteur.adresse' placeholder="Adresse" formControlName='tuteurAdresse'>
+          <input matInput [(ngModel)]='donneesContrat.tuteur.adresse' placeholder="Adresse" formControlName='tuteurAdresse'>
         </mat-form-field>
       </div>
       <div>
         <h3 class='h3-contrat'><mat-icon matPrefix>local_hospital</mat-icon> Médecin de famille</h3>
         <mat-divider></mat-divider>
         <mat-form-field>
-          <input matInput [(ngModel)]='myDocteur.nom' placeholder="Nom" formControlName='medecinNom'>
+          <input matInput [(ngModel)]='donneesContrat.docteur.nom' placeholder="Nom" formControlName='medecinNom'>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myDocteur.prenom' placeholder="Prénom" formControlName='medecinPrenom'>
+          <input matInput [(ngModel)]='donneesContrat.docteur.prenom' placeholder="Prénom" formControlName='medecinPrenom'>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myDocteur.telPortable' placeholder="Numéro de téléphone" formControlName='medecinTelPortable'>
+          <input matInput [(ngModel)]='donneesContrat.docteur.telPortable' placeholder="Numéro de téléphone" formControlName='medecinTelPortable'>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]='myDocteur.adresse' placeholder="Adresse" formControlName='medecinAdresse'>
+          <input matInput [(ngModel)]='donneesContrat.docteur.adresse' placeholder="Adresse" formControlName='medecinAdresse'>
         </mat-form-field>
       </div>
     </form>
@@ -92,53 +100,70 @@
       <mat-divider></mat-divider>
       <div>
         <mat-form-field>
-          <input matInput placeholder="Moy d'heures par semaine" [(ngModel)]="myContrat.NbHeuresGardeSemaine" formControlName="moyHeuresParSemaine">
+          <input matInput placeholder="Moy d'heures par semaine" [(ngModel)]="donneesContrat.contrat.nbHeuresGardeSemaine" (keyup)='calculMoyenneHeuresParMois(); calculSalaireBaseNet(); this.calculCPBaseBrut()' formControlName="moyHeuresParSemaine">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Moy d'heures par mois" [(ngModel)]="myContrat.moyNbHeuresGardeMois" formControlName="moyHeuresParMois">
-        </mat-form-field>
+          <input matInput placeholder="Moy de semaines par an" [(ngModel)]="donneesContrat.contrat.nbSemainesGardeAn" (keyup)='calculMoyenneHeuresParMois(); calculMoyenneJoursParMois(); calculSalaireBaseNet()' formControlName="moySemainesParAn">
+        </mat-form-field>  
         <mat-form-field>
-          <input matInput placeholder="Moy de semaines par an" [(ngModel)]="myContrat.nbSemainesGardeAn" formControlName="moySemainesParAn">
-        </mat-form-field>
+          <input matInput placeholder="Nb de jours par semaine" [(ngModel)]="donneesContrat.contrat.nbJoursGardeSemaine" (keyup)='calculMoyenneJoursParMois()' formControlName="nbJoursParSemaine">
+        </mat-form-field>               
       </div>
       <div>
         <mat-form-field>
-          <input matInput placeholder="Date de début du contrat" [(ngModel)]="myContrat.dateDebut" formControlName="dateDebut">
+          <input matInput  placeholder="Moy d'heures par mois" [ngModel]="donneesContrat.contrat.moyNbHeuresGardeMois | number : '1.2-2'" formControlName="moyHeuresParMois">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Date de fin du contrat" [(ngModel)]="myContrat.dateFin" formControlName="dateFin">
+            <input matInput placeholder="Moy de jours par mois" [ngModel]="donneesContrat.contrat.moyNbJoursGardeMois | number : '1.0-0'" formControlName="moyJoursParMois">
+          </mat-form-field>
+        <mat-form-field>
+          <input matInput [min]='minDateDebut' [matDatepicker]="datePickerDebut" placeholder="Date de début du contrat" [(ngModel)]="donneesContrat.contrat.dateDebut" formControlName="dateDebut">
+          <mat-datepicker-toggle matPrefix [for]='datePickerDebut'></mat-datepicker-toggle>
+          <mat-datepicker #datePickerDebut></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Moy de jours par mois" [(ngModel)]="myContrat.moyNbJoursGardeMois" formControlName="moyJoursParMois">
-        </mat-form-field>
+          <input matInput [min]='minDateDebut' [matDatepicker]='datePickerfin' placeholder="Date de fin du contrat" [(ngModel)]="donneesContrat.contrat.dateFin" formControlName="dateFin">
+          <mat-datepicker-toggle matPrefix [for]='datePickerfin'></mat-datepicker-toggle>
+          <mat-datepicker #datePickerfin></mat-datepicker>
+        </mat-form-field>        
       </div> 
       <h3 class="h3-contrat"><mat-icon matPrefix>euro_symbol</mat-icon><i> Rémunération</i></h3>
       <mat-divider></mat-divider>
       <div>
         <mat-form-field>
-          <input matInput placeholder="Taux horaire brut" [(ngModel)]="myContrat.tauxHoraireBrut" formControlName="tauxHoraireBrut">
+          <input matInput placeholder="Taux horaire brut" formControlName="tauxHoraireBrut" #tauxHoraireBrut (keyup)='donneesContrat.contrat.tauxHoraireBrut = tauxHoraireBrut.value' [ngModel]="donneesContrat.contrat.tauxHoraireBrut | number : '1.2-2'">          
           <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Taux horaire net" [(ngModel)]="myContrat.tauxHoraireNet" formControlName="tauxHoraireNet">
+          <input matInput placeholder="Taux horaire net" #tauxHoraireNet (keyup)='calculTauxHoraireBrut(tauxHoraireNet.value); calculSalaireBaseNet()' [ngModel]="donneesContrat.contrat.tauxHoraireNet | number : '1.2-2'" formControlName="tauxHoraireNet">
           <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Salaire brut mensuel" [(ngModel)]="myContrat.salaireBaseBrut" formControlName="salaireBaseBrut">
-          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
-        </mat-form-field>
+        </mat-form-field>        
       </div>
       <div>
         <mat-form-field>
-          <input matInput placeholder="Montant CP contrat" [(ngModel)]="myContrat.congesPayesBaseBrut" formControlName="congesPayesBaseBrut">
+          <input matInput placeholder="Salaire brut mensuel" [ngModel]="donneesContrat.contrat.salaireBaseBrut | number : '1.2-2'" formControlName="salaireBaseBrut">
           <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Total salaire brut mensuel" [(ngModel)]="myContrat.salaireTotalBaseBrut" formControlName="salaireTotalBaseBrut">
+          <input matInput placeholder="Montant CP brut contrat" [ngModel]="donneesContrat.contrat.congesPayesBaseBrut | number : '1.2-2'" formControlName="congesPayesBaseBrut">
           <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Total salaire net mensuel" [(ngModel)]="myContrat.salaireTotalBaseNet" formControlName="salaireTotalBaseNet">
+          <input matInput placeholder="Total salaire brut mensuel" [ngModel]="donneesContrat.contrat.salaireTotalBaseBrut | number : '1.2-2'" formControlName="salaireTotalBaseBrut">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>        
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Salaire net mensuel" [ngModel]="donneesContrat.contrat.salaireBaseNet | number : '1.2-2'" formControlName="salaireBaseNet">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Montant CP net contrat" [ngModel]="donneesContrat.contrat.congesPayesBaseNet | number : '1.2-2'" formControlName="congesPayesBaseNet">
+          <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Total salaire net mensuel" [ngModel]="donneesContrat.contrat.salaireTotalBaseNet | number : '1.2-2'" formControlName="salaireTotalBaseNet">
           <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
         </mat-form-field>
       </div>
@@ -146,22 +171,22 @@
       <mat-divider></mat-divider>
       <div>
         <mat-form-field>
-          <input matInput placeholder="Repas" [(ngModel)]="myContrat.montantRepas" formControlName="montantRepas">
+          <input matInput placeholder="Repas" [ngModel]="donneesContrat.contrat.montantRepas | number : '1.2-2'" #montantRepas (keyup)="donneesContrat.contrat.montantRepas = montantRepas.value" formControlName="montantRepas">
           <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Jounalières" [(ngModel)]="myContrat.montantIndemnites" formControlName="montantIndemnites">
+          <input matInput placeholder="Jounalières" [ngModel]="donneesContrat.contrat.montantIndemnites | number : '1.2-2'" #montantIndemnites (keyup)="donneesContrat.contrat.montantIndemnites = montantIndemnites.value" formControlName="montantIndemnites">
           <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Goûter" [(ngModel)]="myContrat.montantGouter" formControlName="montantGouter">
+          <input matInput placeholder="Goûter" [ngModel]="donneesContrat.contrat.montantGouter | number : '1.2-2'" #montantGouter (keyup)="donneesContrat.contrat.montantGouter = montantGouter.value" formControlName="montantGouter">
           <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Barème kilométrique" [(ngModel)]="myContrat.baremeKm" formControlName="baremeKm">
+          <input matInput placeholder="Barème kilométrique" [ngModel]="donneesContrat.contrat.baremeKm | number : '1.2-2'" #baremeKm (keyup)="donneesContrat.contrat.baremeKm = baremeKm.value" formControlName="baremeKm">
           <span matSuffix><mat-icon>euro_symbol</mat-icon></span>
         </mat-form-field>
-      </div>
+      </div>      
     </form>
   </mat-tab>
   <mat-tab label="Planning">
@@ -170,65 +195,77 @@
     <h3 class='h3-contrat'><u><i>Lundi</i></u></h3>
     <label>Heure d'arrivée : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.lundi.heureArrivee' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.lundi.heureArrivee' placeholder="HH:MM">
     </mat-form-field>
     <label>Heure de départ : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.lundi.heureDepart' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.lundi.heureDepart' placeholder="HH:MM">
     </mat-form-field>  
     <h3 class='h3-contrat'><u><i>Mardi</i></u></h3>
     <label>Heure d'arrivée : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.mardi.heureArrivee' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.mardi.heureArrivee' placeholder="HH:MM">
     </mat-form-field>
     <label>Heure de départ : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.mardi.heureDepart' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.mardi.heureDepart' placeholder="HH:MM">
     </mat-form-field>
     <h3 class='h3-contrat'><u><i>Mercredi</i></u></h3>
     <label>Heure d'arrivée : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.mercredi.heureArrivee' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.mercredi.heureArrivee' placeholder="HH:MM">
     </mat-form-field>
     <label>Heure de départ : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.mercredi.heureDepart' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.mercredi.heureDepart' placeholder="HH:MM">
     </mat-form-field>
     <h3 class='h3-contrat'><u><i>Jeudi</i></u></h3>
     <label>Heure d'arrivée : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.jeudi.heureArrivee' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.jeudi.heureArrivee' placeholder="HH:MM">
     </mat-form-field>
     <label>Heure de départ : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.jeudi.heureDepart' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.jeudi.heureDepart' placeholder="HH:MM">
     </mat-form-field>
     <h3 class='h3-contrat'><u><i>Vendredi</i></u></h3>
     <label>Heure d'arrivée : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.vendredi.heureArrivee' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.vendredi.heureArrivee' placeholder="HH:MM">
     </mat-form-field>
     <label>Heure de départ : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.vendredi.heureDepart' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.vendredi.heureDepart' placeholder="HH:MM">
     </mat-form-field>
     <h3 class='h3-contrat'><u><i>Samedi</i></u></h3>
     <label>Heure d'arrivée : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.samedi.heureArrivee' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.samedi.heureArrivee' placeholder="HH:MM">
     </mat-form-field>
     <label>Heure de départ : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.samedi.heureDepart' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.samedi.heureDepart' placeholder="HH:MM">
     </mat-form-field>
     <h3 class='h3-contrat'><u><i>Dimanche</i></u></h3>
     <label>Heure d'arrivée : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.dimanche.heureArrivee' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.dimanche.heureArrivee' placeholder="HH:MM">
     </mat-form-field>
     <label>Heure de départ : </label>
     <mat-form-field>
-      <input matInput [(ngModel)]='myPlanning.dimanche.heureDepart' placeholder="HH:MM">
+      <input matInput [(ngModel)]='donneesContrat.planning.dimanche.heureDepart' placeholder="HH:MM">
     </mat-form-field>    
   </mat-tab>
 </mat-tab-group>
+<a routerLink='' mat-raised-button>
+  <mat-icon matPrefix>cancel</mat-icon>
+  Annuler
+</a>
+<button mat-raised-button (click)='envoiContrat()'>
+  Valider le contrat
+  <mat-icon matSuffix>send</mat-icon>
+</button>
+<button mat-raised-button (click)='test()'>
+    Test
+    <mat-icon matSuffix>build</mat-icon>
+  </button>

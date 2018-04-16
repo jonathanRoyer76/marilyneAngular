@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
-import { UsersDbService } from '../users-db.service'
-import { Categorie } from '../categorie'
+import { UsersDbService } from '../services/users-db.service'
+import { Categorie } from '../classes/categorie'
 
 @Component({
   selector: 'app-display-data-table',

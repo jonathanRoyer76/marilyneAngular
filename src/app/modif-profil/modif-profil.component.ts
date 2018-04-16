@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Personne } from '../personne'
-import { Categorie } from '../categorie'
+import { Personne } from '../classes/personne'
+import { Categorie } from '../classes/categorie'
 import { MAT_DIALOG_DATA, MAT_SNACK_BAR_DATA, MatSnackBar, MatDialogRef } from '@angular/material'
-import { UsersDbService } from '../users-db.service'
+import { UsersDbService } from '../services/users-db.service'
 import { ErrorsHandlerService } from '../errorsHandlers/errors-handler.service';
 import { FormGroupDirective, NgForm } from '@angular/forms'
 import { FormBuilder, FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms'

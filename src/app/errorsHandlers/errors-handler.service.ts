@@ -29,22 +29,18 @@ export class ErrorsHandlerService {
 export class modalHttpErrorHandler{
 
   titre: string
-  // message: string;
   status: number;
   url: string
   statustext: string
-  // headers: any
   error : any
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: string
   ) {
-    // this.message    = data['message'];
     this.titre      = data['titre']
     this.status     = data['status']
     this.url        = data['url'];
     this.statustext = data['statustext'];
-    // this.headers    = data['headers'];
     this.error      = data['error'];
    }
 }

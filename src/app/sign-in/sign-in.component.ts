@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, 
   Inject, Input, Output, EventEmitter } from '@angular/core';
-import { Personne } from '../personne'
-import { UsersDbService } from '../users-db.service'
+import { Personne } from '../classes/personne'
+import { UsersDbService } from '../services/users-db.service'
 import { ErrorsHandlerService } from '../errorsHandlers/errors-handler.service'
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http'
 import { Observable} from 'rxjs/Observable'

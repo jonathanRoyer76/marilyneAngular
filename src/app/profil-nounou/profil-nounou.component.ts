@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfilNounou } from '../profilNounou';
-import { Personne } from '../personne'
-import { Categorie } from '../categorie'
+import { ProfilNounou } from '../classes/profilNounou';
+import { Personne } from '../classes/personne'
+import { Categorie } from '../classes/categorie'
 // import { UsersDbService } from '../users-db.service'
-import { ProfileNounouService } from '../profile-nounou.service'
+import { ProfileNounouService } from '../services/profile-nounou.service'
 import { RouterModule, Routes, Router } from '@angular/router'
 import { FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms'
-import { UsersDbService } from '../users-db.service';
+import { UsersDbService } from '../services/users-db.service';
 import { MatSnackBar } from '@angular/material'
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component, OnInit,  } from '@angular/core';
 import { FormGroupDirective, NgForm } from '@angular/forms'
 import { Location } from '@angular/common';
-import { Personne } from '../personne'
-import { UsersDbService } from '../users-db.service'
+import { Personne } from '../classes/personne'
+import { UsersDbService } from '../services/users-db.service'
 import { ErrorsHandlerService } from '../errorsHandlers/errors-handler.service'
 import { MatSnackBar } from '@angular/material'
 import { FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms'
