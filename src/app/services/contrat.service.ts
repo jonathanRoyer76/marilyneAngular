@@ -9,7 +9,7 @@ export class ContratService {
 
   constructor(private http : HttpClient) { }
 
-  public static URL_ADD_CONTRACT = 'http://192.168.1.69:8080/api/contrats/add'
+  public static URL_ADD_CONTRACT = 'http://localhost:8080/api/contrats/add'
 
   //Ajoute un contrat dans la bdd
   addContract(objet : DonneesContrat) : Observable<DonneesContrat>{

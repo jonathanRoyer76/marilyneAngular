@@ -14,14 +14,14 @@ export class UsersDbService {
   private static HEADER = { headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})}
   
   //URLs pour les utilisateurs
-  public static URL_SIGN_IN = 'http://192.168.1.69:8080/api/users/signIn'
-  public static URL_SIGN_UP = 'http://192.168.1.69:8080/api/users/signUp'
-  public static URL_PROFILE = 'http://192.168.1.69:8080/api/users/me'
-  public static URL_PROFILE_NOUNOU = 'http://192.168.1.69:8080/api/users/nounou'
-  public static URL_PROFILES = 'http://192.168.1.69:8080/api/users/profiles'
-  public static URL_PROFILE_ID = 'http://192.168.1.69:8080/api/users/profileWithId'
-  public static URL_AVATAR  = 'http://192.168.1.69:8080/api/users/avatar'
-  public static URL_CATEGORIES  = 'http://192.168.1.69:8080/api/users/categories'
+  public static URL_SIGN_IN = 'http://localhost:8080/api/users/signIn'
+  public static URL_SIGN_UP = 'http://localhost:8080/api/users/signUp'
+  public static URL_PROFILE = 'http://localhost:8080/api/users/me'
+  public static URL_PROFILE_NOUNOU = 'http://localhost:8080/api/users/nounou'
+  public static URL_PROFILES = 'http://localhost:8080/api/users/profiles'
+  public static URL_PROFILE_ID = 'http://localhost:8080/api/users/profileWithId'
+  public static URL_AVATAR  = 'http://localhost:8080/api/users/avatar'
+  public static URL_CATEGORIES  = 'http://localhost:8080/api/users/categories'
 
   constructor(private http: HttpClient) {
    }  
@@ -47,7 +47,8 @@ export class UsersDbService {
   }
 
   //appelle l'API de connexion pour le loggin
-  signIn(personne: Personne):Observable<Personne>{    
+  signIn(personne: Personne):Observable<Personne>{  
+    console.log(UsersDbService.URL_SIGN_IN)  
     let body = 'mail='+personne.mail+'&password='+personne.password
 
     return this.http.post<Personne>(UsersDbService.URL_SIGN_IN, body, 

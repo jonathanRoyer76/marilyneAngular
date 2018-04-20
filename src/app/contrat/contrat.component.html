@@ -13,7 +13,7 @@
           <mat-error *ngIf="controlEnfantPrenom.invalid">Champ requis invalide</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [min]='minDateDebut' [matDatepicker]='dateNaissanceEnfant' placeholder="Date de naissance" [(ngModel)]="donneesContrat.enfant.dateNaissance" formControlName="enfantDateNaissance">
+          <input matInput [matDatepicker]='dateNaissanceEnfant' placeholder="Date de naissance" [(ngModel)]="donneesContrat.enfant.dateNaissance" formControlName="enfantDateNaissance">
           <mat-datepicker-toggle matPrefix [for]='dateNaissanceEnfant'></mat-datepicker-toggle>
           <mat-datepicker #dateNaissanceEnfant></mat-datepicker>
         </mat-form-field>
@@ -268,4 +268,5 @@
 <button mat-raised-button (click)='test()'>
     Test
     <mat-icon matSuffix>build</mat-icon>
-  </button>
+</button>
+{{donneesContrat.contrat.dateDebut}}

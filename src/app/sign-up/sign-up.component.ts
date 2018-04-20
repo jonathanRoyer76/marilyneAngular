@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { Personne } from '../classes/personne'
 import { UsersDbService } from '../services/users-db.service'
 import { ErrorsHandlerService } from '../errorsHandlers/errors-handler.service'
-import { MatSnackBar } from '@angular/material'
+import { MatSnackBar, MatDatepicker, DateAdapter } from '@angular/material'
 import { FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms'
 
 @Component({
@@ -28,23 +28,31 @@ export class SignUpComponent implements OnInit {
   controltelPortable     = new FormControl('', [Validators.pattern(/#^0[1-68]([-. ]?[0-9]{2}){4}$#/)])
 
   constructor(private location: Location, 
-    private myDataBase        : UsersDbService,
-    private httpErrorHandler  : ErrorsHandlerService,
-    private mySnackBar        : MatSnackBar,
+    private myDataBase      : UsersDbService,
+    private httpErrorHandler: ErrorsHandlerService,
+    private mySnackBar      : MatSnackBar,
+    private adapter         : DateAdapter<any>
   ) {}
 
   ngOnInit() {
-    this.personne    = new Personne();
-    this.myFormGroup = new FormGroup({
+    this.adapter.setLocale('fr-FR')
+    this.personne               = new Personne();
+    this.personne.dateNaissance = new Date()
+    this.myFormGroup            = new FormGroup({
       nom            : this.controlNom,
       prenom         : this.controlPrenom,
       password       : this.controlPassword,
       confirmPassword: this.controlConfirmPassword,
       mail           : this.controlMail,
       telPortable    : this.controltelPortable,
-      dateNaissance  : this.controlDateNaissance,
+      // dateNaissance  : this.controlDateNaissance,
+      dateNaissance  : new FormControl(), 
       adresse        : new FormControl('',[Validators.minLength(0)])
     })     
+  }
+
+  test(){
+    console.log(this.personne.dateNaissance)
   }
 
   retour(){

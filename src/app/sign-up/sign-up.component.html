@@ -23,10 +23,10 @@
     <mat-form-field>
         <input matInput [(ngModel)]="personne.telPortable"type="text" placeholder="01-23-45-67-89 ou 0123456789" formControlName="telPortable" [formControl]="controltelPortable">
     </mat-form-field>
-    <mat-icon>date_range</mat-icon>
     <mat-form-field>
-        <input matInput [(ngModel)]="personne.dateNaissance"type="text" placeholder ='jj/mm/aaaa' formControlName="dateNaissance" [formControl]="controlDateNaissance">
-        <mat-error *ngIf='controlDateNaissance.invalid'>Saisie invalide</mat-error>
+        <input matInput [matDatepicker]="dateNaissance" [(ngModel)]="personne.dateNaissance" placeholder ='Date de naissance' formControlName="dateNaissance" [formControl]="controlDateNaissance">
+        <mat-datepicker-toggle matPrefix [for]="dateNaissance"></mat-datepicker-toggle>
+        <mat-datepicker #dateNaissance></mat-datepicker>
     </mat-form-field>
     <mat-icon>place</mat-icon>
     <mat-form-field>
@@ -48,5 +48,9 @@
         <button mat-raised-button (click)="validation()" name="validation">Valider 
             <mat-icon>send</mat-icon>
         </button>    
+        <button mat-raised-button (click)="test()">
+            <mat-icon>build</mat-icon>Test
+        </button>
     </p>
 </form>
+{{personne.dateNaissance}}

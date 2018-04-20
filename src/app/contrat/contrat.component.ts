@@ -5,7 +5,7 @@ import { Planning } from '../classes/planning'
 import { ProfilNounou } from '../classes/profilNounou'
 import { DonneesContrat } from '../classes/donneesContrat'
 
-import { MatDatepicker, MatNativeDateModule, DateAdapter } from '@angular/material'
+import { MatDatepicker,  DateAdapter } from '@angular/material'
 
 import { ContratService } from '../services/contrat.service'
 import { ProfileNounouService } from '../services/profile-nounou.service'
@@ -60,13 +60,13 @@ export class ContratComponent implements OnInit {
     this.donneesContrat.planning          = new Planning()
     this.donneesContrat.contrat.dateDebut = new Date()
     this.myProfileNounouService.getProfileNounou().subscribe(data=>{
-      this.myProfileNounou = data
-      this.donneesContrat.contrat.tauxHoraireNet = this.myProfileNounou.tauxHoraire
+      this.myProfileNounou                          = data
+      this.donneesContrat.contrat.tauxHoraireNet    = this.myProfileNounou.tauxHoraire
       this.calculTauxHoraireBrut(this.donneesContrat.contrat.tauxHoraireNet)
-      this.donneesContrat.contrat.montantRepas = this.myProfileNounou.montantRepas
+      this.donneesContrat.contrat.montantRepas      = this.myProfileNounou.montantRepas
       this.donneesContrat.contrat.montantIndemnites = this.myProfileNounou.montantIndemnites
-      this.donneesContrat.contrat.montantGouter = this.myProfileNounou.montantGouters
-      this.donneesContrat.contrat.baremeKm = this.myProfileNounou.baremeKm
+      this.donneesContrat.contrat.montantGouter     = this.myProfileNounou.montantGouters
+      this.donneesContrat.contrat.baremeKm          = this.myProfileNounou.baremeKm
     })
     this.myFormGroupContrat        = new FormGroup({
       moyHeuresParSemaine          : new FormControl(),
@@ -165,13 +165,13 @@ export class ContratComponent implements OnInit {
   }
 
   test(){
-    console.log(this.donneesContrat)
+    console.log(this.donneesContrat.contrat.dateDebut)
   }
   //Envoi le contrat dans la BDD
   envoiContrat(){
     this.donneesContrat.contrat = this.donneesContrat.contrat
     this.myContratService.addContract(this.donneesContrat).subscribe(
-      data=>{console.log(data)}
+      // data=>{console.log(data)}
     )
   }
   //Respecter l'ordre d'insertion dans la BDD
