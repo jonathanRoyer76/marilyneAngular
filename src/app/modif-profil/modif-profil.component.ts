@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Personne } from '../classes/personne'
 import { Categorie } from '../classes/categorie'
-import { MAT_DIALOG_DATA, MAT_SNACK_BAR_DATA, MatSnackBar, MatDialogRef } from '@angular/material'
+import { MAT_DIALOG_DATA, MAT_SNACK_BAR_DATA, MatSnackBar, 
+  MatDialogRef, MatDatepicker, DateAdapter } from '@angular/material'
 import { UsersDbService } from '../services/users-db.service'
 import { ErrorsHandlerService } from '../errorsHandlers/errors-handler.service';
 import { FormGroupDirective, NgForm } from '@angular/forms'
@@ -35,10 +36,11 @@ export class ModifProfilComponent{
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private myDataBase                  : UsersDbService,
-    private httpErrorHandler            : ErrorsHandlerService,
-    private snackBarModif               : MatSnackBar,
-    public refModal                     : MatDialogRef<ModifProfilComponent>
+    private myDataBase      : UsersDbService,
+    private httpErrorHandler: ErrorsHandlerService,
+    private snackBarModif   : MatSnackBar,
+    public refModal         : MatDialogRef<ModifProfilComponent>,
+    private adapter         : DateAdapter<any>
   ){
     this.personne                  = new Personne();
     this.categorie                 = new Categorie();
@@ -59,6 +61,7 @@ export class ModifProfilComponent{
    }
 
    ngOnInit() {
+    this.adapter.setLocale('fr-FR')
     this.myFormGroup = new FormGroup({
       selectedId     : new FormControl(),
       nom            : this.controlNom,

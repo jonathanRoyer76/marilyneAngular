@@ -22,9 +22,18 @@ export class DisplayDataTableComponent implements OnInit {
 
   ngOnInit() {  
     this.myDataBase.getProfiles().subscribe(
-        data=>{this.tableSource = this.myDataBase.determineCategories(data)
+        data=>{
+          this.tableSource = this.myDataBase.determineCategories(data)          
+          this.formatDates()
           this.dataSourceProfiles = new MatTableDataSource(this.tableSource)
         },err=>{console.error(err.error)}
       )
   }  
+
+  formatDates(){    
+    for (var i=0; i<this.tableSource.length; i++){
+      let myDate = new Date(this.tableSource[i].dateNaissance)
+      this.tableSource[i].dateNaissance = myDate.toLocaleString().split(" ")[0]
+    }
+  }
 }

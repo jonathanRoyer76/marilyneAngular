@@ -12,9 +12,9 @@ export class ProfileNounouService {
   private static HEADER = { headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})}
 
   //URLs pour le profil nounou
-  public static URL_UPDATE_DONNEES_NOUNOU  = 'http://192.168.1.69:8080/api/users/UpdateDonneesNounou'
-  public static URL_ID_CATEGORIE_NOUNOU  = 'http://192.168.1.69:8080/api/users/getIdCategorieNounou'
-  public static URL_GET_PROFILE_NOUNOU  = 'http://192.168.1.69:8080/api/users/getProfileNounou'
+  public static URL_UPDATE_DONNEES_NOUNOU  = 'http://localhost:8080/api/users/UpdateDonneesNounou'
+  public static URL_ID_CATEGORIE_NOUNOU  = 'http://localhost:8080/api/users/getIdCategorieNounou'
+  public static URL_GET_PROFILE_NOUNOU  = 'http://localhost:8080/api/users/getProfileNounou'
 
   constructor(
     private http : HttpClient) { }
