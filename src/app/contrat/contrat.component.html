@@ -190,71 +190,72 @@
     </form>
   </mat-tab>
   <mat-tab label="Planning">
-    <!-- <h3 class='h3-contrat'><mat-icon matPrefix>access_time</mat-icon> Heures d'acueil dans la semaine</h3> -->
-    <mat-divider></mat-divider>
-    <h3 class='h3-contrat'><u><i>Lundi</i></u></h3>
-    <label>Heure d'arrivée : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.lundi.heureArrivee' placeholder="HH:MM">
-    </mat-form-field>
-    <label>Heure de départ : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.lundi.heureDepart' placeholder="HH:MM">
-    </mat-form-field>  
-    <h3 class='h3-contrat'><u><i>Mardi</i></u></h3>
-    <label>Heure d'arrivée : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.mardi.heureArrivee' placeholder="HH:MM">
-    </mat-form-field>
-    <label>Heure de départ : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.mardi.heureDepart' placeholder="HH:MM">
-    </mat-form-field>
-    <h3 class='h3-contrat'><u><i>Mercredi</i></u></h3>
-    <label>Heure d'arrivée : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.mercredi.heureArrivee' placeholder="HH:MM">
-    </mat-form-field>
-    <label>Heure de départ : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.mercredi.heureDepart' placeholder="HH:MM">
-    </mat-form-field>
-    <h3 class='h3-contrat'><u><i>Jeudi</i></u></h3>
-    <label>Heure d'arrivée : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.jeudi.heureArrivee' placeholder="HH:MM">
-    </mat-form-field>
-    <label>Heure de départ : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.jeudi.heureDepart' placeholder="HH:MM">
-    </mat-form-field>
-    <h3 class='h3-contrat'><u><i>Vendredi</i></u></h3>
-    <label>Heure d'arrivée : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.vendredi.heureArrivee' placeholder="HH:MM">
-    </mat-form-field>
-    <label>Heure de départ : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.vendredi.heureDepart' placeholder="HH:MM">
-    </mat-form-field>
-    <h3 class='h3-contrat'><u><i>Samedi</i></u></h3>
-    <label>Heure d'arrivée : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.samedi.heureArrivee' placeholder="HH:MM">
-    </mat-form-field>
-    <label>Heure de départ : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.samedi.heureDepart' placeholder="HH:MM">
-    </mat-form-field>
-    <h3 class='h3-contrat'><u><i>Dimanche</i></u></h3>
-    <label>Heure d'arrivée : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.dimanche.heureArrivee' placeholder="HH:MM">
-    </mat-form-field>
-    <label>Heure de départ : </label>
-    <mat-form-field>
-      <input matInput [(ngModel)]='donneesContrat.planning.dimanche.heureDepart' placeholder="HH:MM">
-    </mat-form-field>    
+    <form [formGroup]="myFormGroupPlanning">
+      <mat-divider></mat-divider>
+      <h3 class='h3-contrat'><u><i>Lundi</i></u></h3>
+      <label>Heure d'arrivée : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.lundi.heureArrivee' placeholder="HH:MM" formControlName='lundiArrivee'>
+      </mat-form-field>
+      <label>Heure de départ : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.lundi.heureDepart' placeholder="HH:MM" formControlName='lundiDepart'>
+      </mat-form-field>  
+      <!-- <h3 class='h3-contrat'><u><i>Mardi</i></u></h3>
+      <label>Heure d'arrivée : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.mardi.heureArrivee' placeholder="HH:MM">
+      </mat-form-field>
+      <label>Heure de départ : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.mardi.heureDepart' placeholder="HH:MM">
+      </mat-form-field>
+      <h3 class='h3-contrat'><u><i>Mercredi</i></u></h3>
+      <label>Heure d'arrivée : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.mercredi.heureArrivee' placeholder="HH:MM">
+      </mat-form-field>
+      <label>Heure de départ : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.mercredi.heureDepart' placeholder="HH:MM">
+      </mat-form-field>
+      <h3 class='h3-contrat'><u><i>Jeudi</i></u></h3>
+      <label>Heure d'arrivée : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.jeudi.heureArrivee' placeholder="HH:MM">
+      </mat-form-field>
+      <label>Heure de départ : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.jeudi.heureDepart' placeholder="HH:MM">
+      </mat-form-field>
+      <h3 class='h3-contrat'><u><i>Vendredi</i></u></h3>
+      <label>Heure d'arrivée : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.vendredi.heureArrivee' placeholder="HH:MM">
+      </mat-form-field>
+      <label>Heure de départ : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.vendredi.heureDepart' placeholder="HH:MM">
+      </mat-form-field>
+      <h3 class='h3-contrat'><u><i>Samedi</i></u></h3>
+      <label>Heure d'arrivée : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.samedi.heureArrivee' placeholder="HH:MM">
+      </mat-form-field>
+      <label>Heure de départ : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.samedi.heureDepart' placeholder="HH:MM">
+      </mat-form-field>
+      <h3 class='h3-contrat'><u><i>Dimanche</i></u></h3>
+      <label>Heure d'arrivée : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.dimanche.heureArrivee' placeholder="HH:MM">
+      </mat-form-field>
+      <label>Heure de départ : </label>
+      <mat-form-field>
+        <input matInput [(ngModel)]='donneesContrat.planning.dimanche.heureDepart' placeholder="HH:MM">
+      </mat-form-field> -->
+    </form>    
   </mat-tab>
 </mat-tab-group>
 <a routerLink='' mat-raised-button>

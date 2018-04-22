@@ -29,6 +29,7 @@ export class ContratComponent implements OnInit {
   // myTuteur                 : Personne
   myFormGroupContrat       : FormGroup
   myFormGroupRenseignements: FormGroup
+  myFormGroupPlanning      : FormGroup
 
   //Contrôleurs d'erreurs de saisie
   controlEnfantNom    = new FormControl('',[Validators.required])
@@ -112,6 +113,10 @@ export class ContratComponent implements OnInit {
       medecinAdresse               : new FormControl(),
       medecinTelPortable           : new FormControl(),
     })
+    this.myFormGroupPlanning = new FormGroup({
+      lundiArrivee : new FormControl(),
+      lundiDepart : new FormControl(),
+    })
   }  
 
   // Calcule et met à jour le taux oraire brut lors de la saisie du net
@@ -165,7 +170,7 @@ export class ContratComponent implements OnInit {
   }
 
   test(){
-    console.log(this.donneesContrat.contrat.dateDebut)
+    console.log(this.donneesContrat)
   }
   //Envoi le contrat dans la BDD
   envoiContrat(){
