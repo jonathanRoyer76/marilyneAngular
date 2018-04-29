@@ -45,7 +45,6 @@ export class SignUpComponent implements OnInit {
       confirmPassword: this.controlConfirmPassword,
       mail           : this.controlMail,
       telPortable    : this.controltelPortable,
-      // dateNaissance  : this.controlDateNaissance,
       dateNaissance  : new FormControl(), 
       adresse        : new FormControl('',[Validators.minLength(0)])
     })     
@@ -64,6 +63,8 @@ export class SignUpComponent implements OnInit {
       {
         this.personne = data
         this.envoiFichier(data)
+      }, err=>{
+        console.log(err.error)
       });        
   }
 

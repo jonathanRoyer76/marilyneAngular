@@ -50,16 +50,18 @@ export class ContratComponent implements OnInit {
 
   ngOnInit() {
     this.adapter.setLocale('fr-FR')
-    this.donneesContrat                   = new DonneesContrat()
-    this.donneesContrat.contrat           = new Contrat();
-    this.myProfileNounou                  = new ProfilNounou()
-    this.donneesContrat.enfant            = new Personne()
-    this.donneesContrat.mere              = new Personne()
-    this.donneesContrat.pere              = new Personne()
-    this.donneesContrat.docteur           = new Personne()
-    this.donneesContrat.tuteur            = new Personne()   
-    this.donneesContrat.planning          = new Planning()
-    this.donneesContrat.contrat.dateDebut = new Date()
+    this.donneesContrat                      = new DonneesContrat()
+    this.donneesContrat.contrat              = new Contrat();
+    this.myProfileNounou                     = new ProfilNounou()
+    this.donneesContrat.enfant               = new Personne()
+    this.donneesContrat.mere                 = new Personne()
+    this.donneesContrat.pere                 = new Personne()
+    this.donneesContrat.docteur              = new Personne()
+    this.donneesContrat.tuteur               = new Personne()   
+    this.donneesContrat.planning             = new Planning()
+    this.donneesContrat.contrat.dateDebut    = new Date()
+    this.donneesContrat.contrat.dateFin      = new Date()
+    this.donneesContrat.enfant.dateNaissance = new Date()
     this.myProfileNounouService.getProfileNounou().subscribe(data=>{
       this.myProfileNounou                          = data
       this.donneesContrat.contrat.tauxHoraireNet    = this.myProfileNounou.tauxHoraire
@@ -116,6 +118,18 @@ export class ContratComponent implements OnInit {
     this.myFormGroupPlanning = new FormGroup({
       lundiArrivee : new FormControl(),
       lundiDepart : new FormControl(),
+      mardiArrivee : new FormControl(),
+      mardiDepart : new FormControl(),
+      mercrediArrivee : new FormControl(),
+      mercrediDepart : new FormControl(),
+      jeudiArrivee : new FormControl(),
+      jeudiDepart : new FormControl(),
+      vendrediArrivee : new FormControl(),
+      vendrediDepart : new FormControl(),
+      samediArrivee : new FormControl(),
+      samediDepart : new FormControl(),
+      dimancheArrivee : new FormControl(),
+      dimancheDepart : new FormControl(),
     })
   }  
 
@@ -172,6 +186,7 @@ export class ContratComponent implements OnInit {
   test(){
     console.log(this.donneesContrat)
   }
+
   //Envoi le contrat dans la BDD
   envoiContrat(){
     this.donneesContrat.contrat = this.donneesContrat.contrat
