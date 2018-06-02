@@ -1,4 +1,5 @@
 @import "../../node_modules/@angular/material/theming"; 
+@import "_mat_card";
 
 @include mat-core();
 $myPrimary: mat-palette($mat-pink, A400); 
@@ -25,11 +26,17 @@ slider-off-active: rgba(black, 0.38),
 
 $myTheme: mat-light-theme($myPrimary, $myAccent, $myWarn, $myForeground); 
 @include angular-material-theme($myTheme);
-
+@include my_mat_card;
 // @import 'button';
 // @import 'formulaire';
 // @include myButton($myTheme);
 // @include myFormulaire($myTheme); 
+
+#conteneur{
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap;
+}
 
 a{
     text-decoration: none;

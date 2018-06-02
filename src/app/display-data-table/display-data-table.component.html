@@ -1,5 +1,13 @@
-<div>
-  <mat-table #table [dataSource]='dataSourceProfiles'>
+<div id="conteneur">
+    <mat-card *ngFor="let temp of tableSource" class="myMatCard">
+        <mat-card-header class="myTitleCard">            
+          <mat-card-title>{{temp.prenom}} {{temp.nom}}</mat-card-title>
+          <mat-card-subtitle>{{temp.libelleCategorie}}</mat-card-subtitle>
+          <!-- <mat-card-title><h3></h3></mat-card-title> -->
+        </mat-card-header> 
+        <img mat-card-image class="imageMatCard" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    </mat-card>
+  <!-- <mat-table #table [dataSource]='dataSourceProfiles'>
     <ng-container matColumnDef='idPersonne'>
       <mat-header-cell *matHeaderCellDef>Identifiant</mat-header-cell>
       <mat-cell *matCellDef='let personne'>{{personne.idPersonne}}</mat-cell>
@@ -39,5 +47,5 @@
 
       <mat-header-row *matHeaderRowDef="colonnesAffichees"></mat-header-row>
       <mat-row *matRowDef="let row; columns: colonnesAffichees;"></mat-row>
-    </mat-table>
+    </mat-table> -->
 </div>

@@ -1301,6 +1301,18 @@ input.mat-input-element {
 .mat-simple-snackbar-action {
   color: #26a69a; }
 
+.myMatCard {
+  max-width: 250px;
+  margin: 1% 1%; }
+
+.imageMatCard {
+  background-size: cover; }
+
+#conteneur {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; }
+
 a {
   text-decoration: none;
   color: #f50057;
