@@ -23,6 +23,7 @@ export class DisplayDataTableComponent implements OnInit {
   ngOnInit() {  
     this.myDataBase.getProfiles().subscribe(
         data=>{
+          console.log(data)
           this.tableSource = this.myDataBase.determineCategories(data)          
           this.formatDates()
           this.dataSourceProfiles = new MatTableDataSource(this.tableSource)
