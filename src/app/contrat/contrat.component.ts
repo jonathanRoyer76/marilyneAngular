@@ -46,7 +46,7 @@ export class ContratComponent implements OnInit {
     private myContratService      : ContratService,
     private myProfileNounouService: ProfileNounouService,
     private adapter               : DateAdapter<any>
-  ) {}
+  ) {} 
 
   ngOnInit() {
     this.adapter.setLocale('fr-FR')
