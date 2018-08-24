@@ -58,7 +58,7 @@ export class ContratComponent implements OnInit {
     this.donneesContrat.pere                 = new Personne()
     this.donneesContrat.docteur              = new Personne()
     this.donneesContrat.tuteur               = new Personne()   
-    this.donneesContrat.planning             = new Planning()
+    this.donneesContrat.planning             = new Planning() 
     this.donneesContrat.contrat.dateDebut    = new Date()
     this.donneesContrat.contrat.dateFin      = new Date()
     this.donneesContrat.enfant.dateNaissance = new Date()
