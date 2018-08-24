@@ -1,10 +1,11 @@
 <div id="conteneur">
     <mat-card *ngFor="let temp of tableSource" class="myMatCard">
         <mat-card-header class="myTitleCard">            
-          <mat-card-title>{{temp.prenom}} {{temp.nom}}</mat-card-title> 
+          <mat-card-title>{{temp.prenom}} {{temp.nom}} {{temp.avatar}}</mat-card-title> 
           <mat-card-subtitle>{{temp.libelleCategorie}}</mat-card-subtitle>
         </mat-card-header> 
-        <img mat-card-image class="imageMatCard" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <img mat-card-image class="imageMatCard" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <!-- <img mat-card-image class="imageMatCard" src="{{temp.avatar}}" alt="Mon image par défaut" /> -->
     </mat-card>
   <!-- <mat-table #table [dataSource]='dataSourceProfiles'>
     <ng-container matColumnDef='idPersonne'>

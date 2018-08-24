@@ -48,7 +48,7 @@ export class UsersDbService {
 
   //appelle l'API de connexion pour le loggin
   signIn(personne: Personne):Observable<Personne>{  
-    console.log(UsersDbService.URL_SIGN_IN)  
+    //console.log(UsersDbService.URL_SIGN_IN)  
     let body = 'mail='+personne.mail+'&password='+personne.password
 
     return this.http.post<Personne>(UsersDbService.URL_SIGN_IN, body, 
