@@ -29,7 +29,8 @@ export class SignInComponent implements OnInit {
   ) { }
 
   test(){
-    this.myDataBase.getProfiles().subscribe(data=>{console.log(data)}, err=>{console.log(err.error)})
+    // this.myDataBase.getProfiles().subscribe(data=>{console.log(data)}, err=>{console.log(err.error)})
+    this.myDataBase.getProfiles().subscribe(data=>console.log(data))
   }
 
   ngOnInit() {

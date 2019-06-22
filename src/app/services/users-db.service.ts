@@ -4,6 +4,7 @@ import { Categorie } from '../classes/categorie'
 import { ProfilNounou } from '../classes/profilNounou'
 import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse, HttpHandler } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable';
+import { UserInterface } from '../interfaces/users';
 
 @Injectable()
 export class UsersDbService {
@@ -14,14 +15,14 @@ export class UsersDbService {
   private static HEADER = { headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})}
   
   //URLs pour les utilisateurs
-  public static URL_SIGN_IN = 'http://localhost:8080/api/users/signIn'
-  public static URL_SIGN_UP = 'http://localhost:8080/api/users/signUp'
-  public static URL_PROFILE = 'http://localhost:8080/api/users/me'
-  public static URL_PROFILE_NOUNOU = 'http://localhost:8080/api/users/nounou'
-  public static URL_PROFILES = 'http://localhost:8080/api/users/profiles'
-  public static URL_PROFILE_ID = 'http://localhost:8080/api/users/profileWithId'
-  public static URL_AVATAR  = 'http://localhost:8080/api/users/avatar'
-  public static URL_CATEGORIES  = 'http://localhost:8080/api/users/categories'
+  public static URL_SIGN_IN = 'http://localhost:8080/users/signIn'
+  public static URL_SIGN_UP = 'http://localhost:8080/users/signUp'
+  public static URL_PROFILE = 'http://localhost:8080/users/me'
+  public static URL_PROFILE_NOUNOU = 'http://localhost:8080/users/nounou'
+  public static URL_PROFILES = 'http://localhost:8080/users/getAll'
+  public static URL_PROFILE_ID = 'http://localhost:8080/users/profileWithId'
+  public static URL_AVATAR  = 'http://localhost:8080/users/avatar'
+  public static URL_CATEGORIES  = 'http://localhost:8080/users/categories'
 
   constructor(private http: HttpClient) {
    }  
@@ -56,8 +57,8 @@ export class UsersDbService {
   }
 
   //appelle l'API retrouvant la liste des profils utilisateurs
-  getProfiles(): Observable<Personne[]>{
-    return this.http.get<Personne[]>(UsersDbService.URL_PROFILES)
+  getProfiles(): Observable<UserInterface[]>{
+    return this.http.get<UserInterface[]>(UsersDbService.URL_PROFILES)
   }
 
   //Récupère le profil nounou
